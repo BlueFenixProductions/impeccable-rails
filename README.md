@@ -33,13 +33,17 @@ this plugin makes **no edits** to other skills.
 
 ## Install
 
+The repo doubles as a single-plugin marketplace (`.claude-plugin/marketplace.json`):
+
 ```bash
-# From a Claude Code session, add the local repo as a plugin:
-/plugin   # then point it at this repo, or install from its git URL
+claude plugin marketplace add ~/Documents/GitHub/design-formulas
+claude plugin install design-formulas@design-formulas      # --scope user (default)
 ```
 
-After install, confirm `design-formulas:reference`, `design-formulas:lint`, and
-`/design-formulas:scaffold` appear in your skill/command list.
+Then **restart Claude Code** (plugins load at startup). Confirm with `claude plugin list` or
+`/help` that `design-formulas:reference`, `design-formulas:lint`, and `/design-formulas:scaffold`
+are available. Cost: ~361 tokens always-on (the skill descriptions); skills/command bodies load
+only when invoked.
 
 ## Scope
 
@@ -48,6 +52,7 @@ After install, confirm `design-formulas:reference`, `design-formulas:lint`, and
 
 **Later:** the long-tail components (tables, lists, tooltips, accordions, tabs, breadcrumbs,
 dropdowns, toggles, checkbox/radio, textarea, avatars, iconography) and the full Design-System chapter.
+Publishing to a shared/remote marketplace is also future scope — v1 installs from this local repo.
 
 ## Provenance
 
