@@ -1,0 +1,30 @@
+design-formulas
+Copyright 2026 Chris <chris@pelatari.com>
+
+Licensed under the Apache License, Version 2.0 (the "License"); see the LICENSE
+file in this repository. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------------------------------------------------------
+Source attribution
+------------------------------------------------------------------------------
+This project distills factual design guidance and numeric formulas from:
+
+    "Design for Developers"
+    by Adrian Twarog & George Moller (EnhanceUI)
+    Purchase / author's other works: https://enhanceui.gumroad.com/
+
+Only facts and ideas are referenced — type-scale ratios, spacing steps, contrast
+minimums, component sizings, and the like. The book's specific text and
+illustrations are © their authors and are neither reproduced nor relicensed here.
+This plugin's code, prose, token files, and CSS are original work covered by the
+Apache-2.0 license above. The 2026 modernizations (OKLCH generation, fluid type,
+semantic dark-mode tokens, the 50–950 weight scale, and WCAG 2.2) are this
+project's own.
+
+Attribution note: the EnhanceUI Gumroad store lists Adrian Twarog as the author;
+George Moller is credited as co-author in the book itself (cover and foreword)
+though he is not listed on the store page.
+
+If these formulas are useful to you, please buy the book to support the authors.

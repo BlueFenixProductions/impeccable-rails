@@ -66,7 +66,17 @@ hover/focus/active/disabled/loading, valid/error inputs, and tab/accordion/table
 
 **Later:** publishing to a shared/remote marketplace (currently installs from this local repo).
 
-## Provenance
+## Credits & license
 
-Formulas are distilled from *Design for Developers* for reference and education. Buy the book to
-support the authors. Modernizations and token generation are this plugin's own.
+This plugin distills **factual** design guidance and numeric formulas from ***Design for Developers*
+by Adrian Twarog & George Moller** (EnhanceUI). It references facts and ideas — type-scale ratios,
+spacing steps, contrast minimums, component sizings — not the book's specific text or illustrations,
+which remain © their authors. The code, prose, token files, CSS, and the 2026 modernizations are this
+project's own work.
+
+- **Buy the book / the authors' other works:** https://enhanceui.gumroad.com/
+- **Attribution note:** the EnhanceUI store lists **Adrian Twarog**; **George Moller** is credited as
+  co-author in the book itself (cover + foreword) though not on the store page.
+
+Licensed under the **Apache License 2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
+If these formulas are useful to you, please buy the book to support the authors.
