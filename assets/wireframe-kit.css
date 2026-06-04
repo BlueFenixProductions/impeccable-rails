@@ -1,0 +1,78 @@
+/* design-formulas — low-fidelity wireframe kit
+ * Grayscale hierarchy + ONE primary accent (per process.md §1, "aesthetic wireframe rules").
+ * 12-column grid + 4-point spacing (per spacing-layout.md). Self-contained: inline this into the
+ * generated standalone wireframe HTML. Override --wf-primary / --wf-accent per brief.
+ */
+:root {
+  --wf-paper:  #f4f5f7;   /* canvas (not pure white — avoid plain B&W) */
+  --wf-card:   #ffffff;
+  --wf-100: #eceef1;  --wf-200: #dfe2e6;  --wf-300: #c7ccd2;
+  --wf-400: #aab1b9;  --wf-500: #8b939c;  --wf-600: #6b727b;
+  --wf-700: #4c525a;  --wf-800: #333840;  --wf-900: #1f2329;
+  --wf-line:   #c7ccd2;
+  --wf-primary: #5b7da6;     /* the ONE color for the key action */
+  --wf-accent:  #c98a5b;     /* sparing secondary accent */
+  --wf-unit: 4px;            /* baseline */
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--wf-paper); color: var(--wf-700);
+  font: 14px/1.5 ui-sans-serif, system-ui, sans-serif;
+  padding: calc(var(--wf-unit) * 6);
+}
+.wf { max-width: 1120px; margin: 0 auto; }
+
+/* 12-column grid */
+.wf-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: calc(var(--wf-unit) * 6); }
+.c1{grid-column:span 1}.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}
+.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}
+.c9{grid-column:span 9}.c10{grid-column:span 10}.c11{grid-column:span 11}.c12{grid-column:span 12}
+
+/* generic low-fi box */
+.wf-box { background: var(--wf-card); border: 1px solid var(--wf-line); border-radius: 4px;
+  padding: calc(var(--wf-unit) * 6); }
+.wf-section { margin-bottom: calc(var(--wf-unit) * 12); }
+
+/* image / media placeholder — diagonal cross, the universal "image here" cue */
+.wf-img { background:
+    repeating-linear-gradient(45deg, var(--wf-200) 0 10px, var(--wf-100) 10px 20px);
+  border: 1px solid var(--wf-line); border-radius: 4px; position: relative; min-height: 160px; }
+.wf-img::after { content: "▢ image"; position: absolute; inset: 0; display: grid; place-items: center;
+  color: var(--wf-500); font-size: 13px; }
+
+/* placeholder TEXT — bars convey hierarchy by width + shade + height */
+.wf-h1 { height: 28px; width: 70%; background: var(--wf-800); border-radius: 3px; margin: 0 0 12px; }
+.wf-h2 { height: 20px; width: 50%; background: var(--wf-700); border-radius: 3px; margin: 0 0 10px; }
+.wf-h3 { height: 16px; width: 40%; background: var(--wf-600); border-radius: 3px; margin: 0 0 8px; }
+.wf-line { height: 9px; background: var(--wf-300); border-radius: 3px; margin: 6px 0; }
+.wf-line.w90{width:90%}.wf-line.w75{width:75%}.wf-line.w60{width:60%}.wf-line.w40{width:40%}
+.wf-lorem { color: var(--wf-500); }      /* or use real lorem ipsum text in this muted tone */
+
+/* buttons — primary = the ONE filled accent; secondary = ghost/outline */
+.wf-btn { display: inline-block; padding: 10px 20px; border-radius: 4px; font-size: 13px;
+  border: 1px solid var(--wf-500); color: var(--wf-700); background: transparent; }
+.wf-btn-primary { background: var(--wf-primary); border-color: var(--wf-primary); color: #fff; }
+
+/* nav bar */
+.wf-nav { display: flex; align-items: center; gap: calc(var(--wf-unit)*8);
+  padding: calc(var(--wf-unit)*4) calc(var(--wf-unit)*6); background: var(--wf-card);
+  border: 1px solid var(--wf-line); border-radius: 4px; margin-bottom: calc(var(--wf-unit)*12); }
+.wf-logo { width: 96px; height: 24px; background: var(--wf-700); border-radius: 3px; }
+.wf-navlink { width: 56px; height: 10px; background: var(--wf-300); border-radius: 3px; }
+.wf-spacer { flex: 1; }
+
+/* form controls (low-fi) */
+.wf-input { height: 38px; background: var(--wf-card); border: 1px solid var(--wf-400);
+  border-radius: 4px; margin: 6px 0 14px; }
+.wf-label { height: 9px; width: 30%; background: var(--wf-500); border-radius: 3px; margin-bottom: 4px; }
+
+/* avatar / icon dots */
+.wf-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--wf-300);
+  border: 1px solid var(--wf-line); }
+
+/* annotation callout (optional, dotted) */
+.wf-note { font-size: 11px; color: var(--wf-500); border-left: 2px dotted var(--wf-400);
+  padding-left: 8px; margin-top: 6px; }
+.wf-center { text-align: center; }
+.wf-stack > * + * { margin-top: calc(var(--wf-unit)*3); }
+.wf-row { display: flex; gap: calc(var(--wf-unit)*4); align-items: center; }

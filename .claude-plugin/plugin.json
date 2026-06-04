@@ -1,6 +1,6 @@
 {
   "name": "design-formulas",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Concrete, 2026-modernized design formulas for developers: a numeric reference (type scale, spacing, color weights, contrast, shadows), a brief-to-design-system scaffold command, and a DO/DON'T lint rubric. Distilled from 'Design for Developers' (Twarog & Moller) and updated for OKLCH, fluid type, semantic dark-mode tokens, the 50-950 weight scale, and WCAG 2.2.",
   "author": {
     "name": "Chris",

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — SaaS landing (low-fi)</title>
+<style>
+/* design-formulas wireframe-kit.css (inlined for a self-contained wireframe) */
+:root{
+  --wf-paper:#f4f5f7;--wf-card:#ffffff;
+  --wf-100:#eceef1;--wf-200:#dfe2e6;--wf-300:#c7ccd2;
+  --wf-400:#aab1b9;--wf-500:#8b939c;--wf-600:#6b727b;
+  --wf-700:#4c525a;--wf-800:#333840;--wf-900:#1f2329;
+  --wf-line:#c7ccd2;--wf-primary:#5b7da6;--wf-accent:#c98a5b;--wf-unit:4px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--wf-paper);color:var(--wf-700);
+  font:14px/1.5 ui-sans-serif,system-ui,sans-serif;padding:calc(var(--wf-unit)*6)}
+.wf{max-width:1120px;margin:0 auto}
+.wf-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:calc(var(--wf-unit)*6)}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}
+.c6{grid-column:span 6}.c7{grid-column:span 7}.c12{grid-column:span 12}
+.wf-box{background:var(--wf-card);border:1px solid var(--wf-line);border-radius:4px;padding:calc(var(--wf-unit)*6)}
+.wf-section{margin-bottom:calc(var(--wf-unit)*12)}
+.wf-img{background:repeating-linear-gradient(45deg,var(--wf-200) 0 10px,var(--wf-100) 10px 20px);
+  border:1px solid var(--wf-line);border-radius:4px;position:relative;min-height:160px}
+.wf-img::after{content:"▢ image";position:absolute;inset:0;display:grid;place-items:center;color:var(--wf-500);font-size:13px}
+.wf-h1{height:28px;width:70%;background:var(--wf-800);border-radius:3px;margin:0 0 12px}
+.wf-h2{height:20px;width:50%;background:var(--wf-700);border-radius:3px;margin:0 0 10px}
+.wf-h3{height:16px;width:40%;background:var(--wf-600);border-radius:3px;margin:0 0 8px}
+.wf-line{height:9px;background:var(--wf-300);border-radius:3px;margin:6px 0}
+.wf-line.w90{width:90%}.wf-line.w75{width:75%}.wf-line.w60{width:60%}.wf-line.w40{width:40%}
+.wf-btn{display:inline-block;padding:10px 20px;border-radius:4px;font-size:13px;border:1px solid var(--wf-500);color:var(--wf-700);background:transparent}
+.wf-btn-primary{background:var(--wf-primary);border-color:var(--wf-primary);color:#fff}
+.wf-nav{display:flex;align-items:center;gap:calc(var(--wf-unit)*8);padding:calc(var(--wf-unit)*4) calc(var(--wf-unit)*6);
+  background:var(--wf-card);border:1px solid var(--wf-line);border-radius:4px;margin-bottom:calc(var(--wf-unit)*12)}
+.wf-logo{width:96px;height:24px;background:var(--wf-700);border-radius:3px}
+.wf-navlink{width:56px;height:10px;background:var(--wf-300);border-radius:3px}
+.wf-spacer{flex:1}
+.wf-note{font-size:11px;color:var(--wf-500);border-left:2px dotted var(--wf-400);padding-left:8px;margin-top:6px}
+.wf-center{text-align:center}.wf-stack>*+*{margin-top:calc(var(--wf-unit)*3)}
+.wf-row{display:flex;gap:calc(var(--wf-unit)*4);align-items:center}
+</style>
+</head>
+<body>
+<div class="wf">
+
+  <!-- NAV (Z-pattern start: logo top-left, primary CTA top-right) -->
+  <nav class="wf-nav">
+    <div class="wf-logo"></div>
+    <div class="wf-navlink"></div><div class="wf-navlink"></div><div class="wf-navlink"></div>
+    <div class="wf-spacer"></div>
+    <span class="wf-btn">Log in</span>
+    <span class="wf-btn wf-btn-primary">Start free</span>
+  </nav>
+
+  <!-- HERO (Z diagonal lands on the single primary CTA) -->
+  <section class="wf-section wf-grid">
+    <div class="c6 wf-stack">
+      <div class="wf-h1"></div>
+      <div class="wf-line w90"></div><div class="wf-line w75"></div><div class="wf-line w60"></div>
+      <div class="wf-row" style="margin-top:16px">
+        <span class="wf-btn wf-btn-primary">Get started — it's free</span>
+        <span class="wf-btn">Watch demo</span>
+      </div>
+      <div class="wf-note">One primary action only; secondary is ghost. Lorem stands in for copy.</div>
+    </div>
+    <div class="c6 wf-img" style="min-height:240px"></div>
+  </section>
+
+  <!-- 3 FEATURES (equal columns = equal weight) -->
+  <section class="wf-section">
+    <div class="wf-h2" style="margin:0 auto 20px"></div>
+    <div class="wf-grid">
+      <div class="c4 wf-box wf-stack"><div class="wf-img" style="min-height:96px"></div><div class="wf-h3"></div><div class="wf-line w90"></div><div class="wf-line w75"></div></div>
+      <div class="c4 wf-box wf-stack"><div class="wf-img" style="min-height:96px"></div><div class="wf-h3"></div><div class="wf-line w90"></div><div class="wf-line w60"></div></div>
+      <div class="c4 wf-box wf-stack"><div class="wf-img" style="min-height:96px"></div><div class="wf-h3"></div><div class="wf-line w90"></div><div class="wf-line w75"></div></div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="wf-section wf-box wf-center wf-stack">
+    <div class="wf-h3" style="margin:0 auto"></div>
+    <div class="wf-row" style="justify-content:center;opacity:.7">
+      <div class="wf-logo"></div><div class="wf-logo"></div><div class="wf-logo"></div><div class="wf-logo"></div>
+    </div>
+    <div class="wf-note" style="border:0;text-align:center">Logos as gray boxes — recognition cue, not real brands.</div>
+  </section>
+
+  <!-- PRICING (3 cards; the recommended tier carries the primary CTA) -->
+  <section class="wf-section">
+    <div class="wf-h2" style="margin:0 auto 20px"></div>
+    <div class="wf-grid">
+      <div class="c4 wf-box wf-stack"><div class="wf-h3"></div><div class="wf-h1" style="width:40%"></div><div class="wf-line w75"></div><div class="wf-line w60"></div><span class="wf-btn">Choose</span></div>
+      <div class="c4 wf-box wf-stack" style="border-color:var(--wf-primary)"><div class="wf-h3"></div><div class="wf-h1" style="width:40%"></div><div class="wf-line w75"></div><div class="wf-line w60"></div><span class="wf-btn wf-btn-primary">Choose plan</span><div class="wf-note">Recommended tier = the page's one primary action.</div></div>
+      <div class="c4 wf-box wf-stack"><div class="wf-h3"></div><div class="wf-h1" style="width:40%"></div><div class="wf-line w75"></div><div class="wf-line w60"></div><span class="wf-btn">Choose</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="wf-grid wf-box">
+    <div class="c3 wf-stack"><div class="wf-logo"></div><div class="wf-line w90"></div><div class="wf-line w60"></div></div>
+    <div class="c2 wf-stack"><div class="wf-line w90"></div><div class="wf-line w75"></div><div class="wf-line w60"></div></div>
+    <div class="c2 wf-stack"><div class="wf-line w90"></div><div class="wf-line w75"></div><div class="wf-line w60"></div></div>
+    <div class="c2 wf-stack"><div class="wf-line w90"></div><div class="wf-line w75"></div><div class="wf-line w60"></div></div>
+    <div class="c3 wf-stack"><div class="wf-h3"></div><div class="wf-input"></div><span class="wf-btn">Subscribe</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

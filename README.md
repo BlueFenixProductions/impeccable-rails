@@ -12,7 +12,8 @@ book's dense layer of **exact numeric formulas** plus its **DO/DON'T rules**, ca
 | Component | Type | What it does |
 |-----------|------|--------------|
 | **`reference`** | skill | The keystone. Numeric formulas as curated tables + a machine-readable `tokens.json`. Auto-loads when concrete design numbers are needed. |
-| **`/design-formulas:scaffold`** | command | Brief → starter design system. Emits CSS vars + `tokens.json`, SCSS/Vuetify theme, Tailwind config, and an HTML + Markdown styleguide. |
+| **`/design-formulas:scaffold`** | command | Brief → starter design system. Emits CSS vars + `tokens.json`, SCSS/Vuetify theme, Tailwind config, and an HTML + Markdown styleguide. Computes exact WCAG ratios via `scripts/contrast.py`. |
+| **`/design-formulas:wireframe`** | command | Page description → low-fidelity grayscale wireframe HTML (one primary accent, 12-col grid, lorem/boxes). The low-fi step before `scaffold`. |
 | **`lint`** | skill | Runs the book's DO/DON'T checklist against a design. Complements (does not replace) `impeccable` / `design:design-critique`. |
 
 `scaffold` and `lint` both read `reference` — that's the only hard link. "Used with `impeccable` /
@@ -56,8 +57,11 @@ only when invoked.
   (logo→palette→type→imagery→grid→components), component states, design-system concepts.
 - **`scripts/contrast.py`** — `/scaffold` computes exact WCAG 2.2 ratios instead of estimating them.
 
-**Later:** a low-fidelity `/wireframe` generator; deeper per-component state specs; publishing to a
-shared/remote marketplace (currently installs from this local repo).
+**v0.4 adds:** `/design-formulas:wireframe` — low-fidelity grayscale wireframes (the process step before
+`scaffold`), with a bundled `assets/wireframe-kit.css`.
+
+**Later:** deeper per-component state specs (hover/focus/disabled CSS); publishing to a shared/remote
+marketplace (currently installs from this local repo).
 
 ## Provenance
 
