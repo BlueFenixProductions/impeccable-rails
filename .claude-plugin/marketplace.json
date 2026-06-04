@@ -3,8 +3,8 @@
   "name": "design-formulas",
   "description": "Single-plugin marketplace for the design-formulas plugin.",
   "owner": {
-    "name": "Chris",
-    "email": "chris@pelatari.com"
+    "name": "Blue Fenix Productions LLC",
+    "email": "chris@bluefenix.net"
   },
   "plugins": [
     {
