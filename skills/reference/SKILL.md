@@ -18,6 +18,7 @@ reference file rather than guessing. All values are distilled from *Design for D
    - **Spacing & layout** — 4/5-point systems, grids/12-col, gutters, baseline units → `references/spacing-layout.md`
    - **Components** — buttons, borders, shadows, icons, inputs, forms, labels, dividers, checkbox, radio, textarea, toggle, dropdown, submit, badges, toasts, breadcrumbs, tables, lists, tooltips, cards, accordions, tabs, iconography, avatars → `references/components.md`
    - **Visual hierarchy** — size/contrast/proximity/alignment/negative-space, F/Z patterns → `references/visual-hierarchy.md`
+   - **Process & styleguide** — wireframing rules, styleguide build order (logo→palette→type→imagery→grid→components), component states, design-system concepts → `references/process.md`
 2. For a single machine-readable source of all default tokens, use `references/tokens.json`.
 
 ## Principles (so the numbers make sense)

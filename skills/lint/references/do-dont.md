@@ -95,6 +95,16 @@ Thresholds mirror `design-formulas:reference` → `tokens.json`.
 | `avatar.square` | info | square avatar | use a rounded avatar |
 | `avatar.oversize` | info | avatar oversized for its context | size to context |
 
+## Process & styleguide
+
+| id | sev | check (flag if…) | fix |
+|----|-----|------------------|-----|
+| `type.fonts.max` | warn | more than **2 font families** in the design | use ≤ 2 (one header, one body) |
+| `palette.primary.max` | info | more than **3 primary** brand colors | keep primary ≤ 3; use accent/neutral for the rest |
+| `type.size.progressive` | info | intermediate font sizes (15px, 17px…) instead of a progressive scale | use 14/16/18/20… (avoid 15px) |
+| `component.states` | info | a component documented without its states | include hover/active/disabled/loading (+ success/error/warning for inputs) |
+| `wireframe.color` | info | wireframe uses full color, or plain black-and-white/doodle style | gray shades for hierarchy + one primary + one accent |
+
 ## Visual hierarchy
 
 | id | sev | check (flag if…) | fix |

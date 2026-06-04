@@ -47,13 +47,17 @@ only when invoked.
 
 ## Scope
 
-**v0.2 (current):** Color, Typography, Spacing/Layout, Visual Hierarchy basics, and the **full
-Component chapter** — buttons, borders, shadows, icons, inputs, forms, labels, dividers, **checkbox,
-radio, textarea, toggle, dropdown, submit button**, badges, toasts, **breadcrumbs, tables, lists,
-tooltips**, cards, **accordions, tabs, iconography, avatars**.
+**v0.3 (current) — the whole book is now in:**
+- **Color, Typography, Spacing/Layout, Visual Hierarchy.**
+- **Full Component chapter** — buttons, borders, shadows, icons, inputs, forms, labels, dividers,
+  checkbox, radio, textarea, toggle, dropdown, submit, badges, toasts, breadcrumbs, tables, lists,
+  tooltips, cards, accordions, tabs, iconography, avatars.
+- **Process & styleguide assembly** (`process.md`) — wireframing rules, the build order
+  (logo→palette→type→imagery→grid→components), component states, design-system concepts.
+- **`scripts/contrast.py`** — `/scaffold` computes exact WCAG 2.2 ratios instead of estimating them.
 
-**Later:** the full Design-Process / Design-System chapters (wireframing, logo, style-guide assembly)
-beyond what `scaffold` needs, and publishing to a shared/remote marketplace (v1 installs from this local repo).
+**Later:** a low-fidelity `/wireframe` generator; deeper per-component state specs; publishing to a
+shared/remote marketplace (currently installs from this local repo).
 
 ## Provenance
 

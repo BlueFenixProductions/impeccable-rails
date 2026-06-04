@@ -7,7 +7,8 @@ argument-hint: "[brand/brief, e.g. 'fintech dashboard, trustworthy, seed #2563EB
 
 Build a coherent starter design system using the formulas in the **`design-formulas:reference`**
 skill. Read `skills/reference/references/tokens.json` and the relevant `references/*.md` for all
-values and recipes — do not invent numbers.
+values and recipes — do not invent numbers. For the styleguide's structure and the build order, follow
+`references/process.md` (logo → palette → typography → imagery/icons → grid → components).
 
 ## Step 1 — Gather the brief
 
@@ -29,8 +30,11 @@ From `$ARGUMENTS` (or by asking the user, one point at a time, only for what's m
    the OKLCH and the HEX.
 3. Add **semantic tokens** for light and dark per `color.md` §5 (surface-0/1/2, text-strong/text/muted,
    border, primary, primary-hover). **Do not invert the ladder for dark mode** — map semantic tokens.
-4. Sanity-check **contrast** (`color.md` §6): text-on-surface ≥ 4.5:1 (≥3:1 for large/UI). Adjust the
-   chosen weight if a pairing fails.
+4. **Verify contrast with the bundled tool — do NOT estimate ratios by eye.** Run
+   `python3 ${CLAUDE_PLUGIN_ROOT}/scripts/contrast.py "<fg>/<bg>" ...` for every text/surface and
+   button pair (e.g. `text/surface-1`, `text-muted/surface-1`, `white/primary-600`, dark-theme pairs).
+   Use its exact ratios + AA/AAA verdicts in the styleguide. If a pairing fails 4.5:1 (3:1 large/UI),
+   pick a darker/lighter weight and re-run.
 
 ## Step 3 — Typography
 
@@ -56,8 +60,12 @@ Write a `design-system/` folder (or the path the user gives). For each selected 
   / `.dark` with `primary`, `secondary`, `surface`, `background`, `on-surface`, etc.) for Vue 3 + Vuetify.
 - **`tailwind.config.js`** — `theme.extend.colors` with the 50–950 ladders, `fontSize` (fluid),
   `spacing`, `boxShadow`.
-- **`styleguide.md`** — human-readable: palette table (weight → HEX → role), type scale, spacing,
-  component specs, and the modernization notes.
+- **`styleguide.md`** — human-readable, ordered as the source of truth (per `process.md` §2):
+  **logo** (placeholder + size/placement/variation rules), **color palette** (each ladder weight → HEX →
+  role; primary ≤3), **typography** (H1–H5 + body, progressive px, line-height/tracking; ≤2 fonts),
+  **imagery & iconography** (style-by-role: outline=nav, solid=forms), **spacing scale**, **components**
+  with their **states** (default/hover/active/disabled/loading; +success/error/warning for inputs), the
+  **exact contrast table** from the tool, and the modernization notes.
 - **`styleguide.html`** — a single standalone file (inline CSS using the generated `:root` vars):
   color swatch grid (all ladders, with HEX labels), a type-scale specimen, spacing ruler, and sample
   button/badge/card so the system can be eyeballed in a browser.
