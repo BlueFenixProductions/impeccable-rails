@@ -47,12 +47,13 @@ only when invoked.
 
 ## Scope
 
-**v1 (this release):** Color, Typography, Spacing/Layout, the 8 most-used components
-(buttons, inputs, forms, labels, dividers, badges, toasts, cards), and Visual Hierarchy basics.
+**v0.2 (current):** Color, Typography, Spacing/Layout, Visual Hierarchy basics, and the **full
+Component chapter** — buttons, borders, shadows, icons, inputs, forms, labels, dividers, **checkbox,
+radio, textarea, toggle, dropdown, submit button**, badges, toasts, **breadcrumbs, tables, lists,
+tooltips**, cards, **accordions, tabs, iconography, avatars**.
 
-**Later:** the long-tail components (tables, lists, tooltips, accordions, tabs, breadcrumbs,
-dropdowns, toggles, checkbox/radio, textarea, avatars, iconography) and the full Design-System chapter.
-Publishing to a shared/remote marketplace is also future scope — v1 installs from this local repo.
+**Later:** the full Design-Process / Design-System chapters (wireframing, logo, style-guide assembly)
+beyond what `scaffold` needs, and publishing to a shared/remote marketplace (v1 installs from this local repo).
 
 ## Provenance
 

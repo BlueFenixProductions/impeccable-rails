@@ -16,7 +16,7 @@ reference file rather than guessing. All values are distilled from *Design for D
    - **Color** — harmony, OKLCH weight ladders (50–950), dark-mode tokens, contrast/WCAG → `references/color.md`
    - **Typography** — modular scale, fluid `clamp()` sizes, line-height, letter-spacing, weights → `references/typography.md`
    - **Spacing & layout** — 4/5-point systems, grids/12-col, gutters, baseline units → `references/spacing-layout.md`
-   - **Components** — buttons, inputs, forms, labels, dividers, badges, toasts, cards, borders, shadows → `references/components.md`
+   - **Components** — buttons, borders, shadows, icons, inputs, forms, labels, dividers, checkbox, radio, textarea, toggle, dropdown, submit, badges, toasts, breadcrumbs, tables, lists, tooltips, cards, accordions, tabs, iconography, avatars → `references/components.md`
    - **Visual hierarchy** — size/contrast/proximity/alignment/negative-space, F/Z patterns → `references/visual-hierarchy.md`
 2. For a single machine-readable source of all default tokens, use `references/tokens.json`.
 

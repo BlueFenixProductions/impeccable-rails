@@ -62,6 +62,39 @@ Thresholds mirror `design-formulas:reference` → `tokens.json`.
 | `toast.persist` | warn | toast doesn't auto-dismiss (~5s) or lacks a close button | auto-dismiss ~5s + close button; max 2 on screen |
 | `card.layout` | info | card header/body/CTA not in a single column | stack header, body, primary CTA in one column |
 
+## Components — long-tail (v0.2)
+
+| id | sev | check (flag if…) | fix |
+|----|-----|------------------|-----|
+| `checkbox.online` | warn | multiple checkboxes on one line | stack them vertically |
+| `checkbox.target` | info | label doesn't wrap the box (box-only click target) | wrap label so the whole item is clickable |
+| `input.capitalize` | info | checkbox/radio/list item labels start lowercase / end with full stops | start capitalized, no trailing period |
+| `select.threshold` | warn | dropdown used for **< 5** options, or radios used for a long set | ≤5 → radios; ≥5 → dropdown |
+| `radio.overflow` | info | radio option text overflows to extra lines (not wrapped under) | wrap label beneath, top-aligned with input |
+| `textarea.single` | warn | textarea used for a single-value field | use a single-line input |
+| `textarea.limit` | info | char-limited textarea shows no character indicator | show "used/max" (and "N remaining") |
+| `toggle.text` | warn | "on/off" text beside or inside the toggle graphic | remove; use a high-contrast color for state |
+| `toggle.question` | info | toggle uses a question label | use a short statement label |
+| `dropdown.default` | warn | dropdown pre-selects a real option (not a placeholder) | start with neutral "Select …" placeholder |
+| `submit.copy` | warn | submit button says "Submit", is ALL-CAPS, or redundant ("Create new account") | describe the exact action ("Create account") |
+| `breadcrumb.currentlink` | warn | current/last breadcrumb is a link | current page is plain text, not a link |
+| `breadcrumb.separator` | info | separator other than ">" or "/" | use ">" or "/" |
+| `breadcrumb.flat` | info | breadcrumbs on a 1–2-level (flat) site | remove — unnecessary clutter |
+| `table.loadmore` | warn | infinite scroll / "load more" for table data | use pagination |
+| `table.numalign` | info | numeric columns not right-aligned (text not left) | left-align text, right-align numbers |
+| `table.overflow` | info | long cell text not truncated | ellipsis + tooltip + resizable column |
+| `table.borders` | info | heavy/unnecessary table borders | rely on spacing/contrast/zebra striping |
+| `tooltip.shadow` | info | tooltip has a drop shadow | remove shadow on tooltips |
+| `tooltip.restate` | warn | tooltip restates already-visible UI text | only add non-essential extra info |
+| `accordion.caret` | info | non-caret icon, or caret at the start of the header | use a caret at the **end**; rotate on expand |
+| `tabs.iconlabel` | warn | icon-only tabs (labels removed) | keep text labels |
+| `tabs.iconsize` | warn | tab icon > 40×40px | wrap icons in a 40×40 container |
+| `tabs.textsize` | error | tab text < 14px | ≥ 14px, line-height 24px |
+| `icon.raster` | warn | raster image used as an icon | use SVG or an icon font (scalable) |
+| `icon.universal` | info | a universally-understood icon altered (hamburger, trash…) | keep standard icons standard |
+| `avatar.square` | info | square avatar | use a rounded avatar |
+| `avatar.oversize` | info | avatar oversized for its context | size to context |
+
 ## Visual hierarchy
 
 | id | sev | check (flag if…) | fix |
