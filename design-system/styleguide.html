@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Dashboard — Design System Styleguide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ──────────────────────────────────────────────────────────── */
+    :root {
+      --color-primary-50: #EFF6FF; --color-primary-100: #DBEAFE; --color-primary-200: #BFDBFE;
+      --color-primary-300: #93C5FD; --color-primary-400: #60A5FA; --color-primary-500: #3B82F6;
+      --color-primary-600: #2563EB; --color-primary-700: #1D4ED8; --color-primary-800: #1E40AF;
+      --color-primary-900: #1E3A8A; --color-primary-950: #172554;
+
+      --color-secondary-50: #FFFBEB; --color-secondary-100: #FEF3C7; --color-secondary-200: #FDE68A;
+      --color-secondary-300: #FCD34D; --color-secondary-400: #FBBF24; --color-secondary-500: #F59E0B;
+      --color-secondary-600: #D97706; --color-secondary-700: #B45309; --color-secondary-800: #92400E;
+      --color-secondary-900: #78350F; --color-secondary-950: #451A03;
+
+      --color-tertiary-50: #ECFDF5; --color-tertiary-100: #D1FAE5; --color-tertiary-200: #A7F3D0;
+      --color-tertiary-300: #6EE7B7; --color-tertiary-400: #34D399; --color-tertiary-500: #10B981;
+      --color-tertiary-600: #059669; --color-tertiary-700: #047857; --color-tertiary-800: #065F46;
+      --color-tertiary-900: #064E3B; --color-tertiary-950: #022C22;
+
+      --color-neutral-50: #F8FAFC; --color-neutral-100: #F1F5F9; --color-neutral-200: #E2E8F0;
+      --color-neutral-300: #CBD5E1; --color-neutral-400: #94A3B8; --color-neutral-500: #64748B;
+      --color-neutral-600: #475569; --color-neutral-700: #334155; --color-neutral-800: #1E293B;
+      --color-neutral-900: #0F172A; --color-neutral-950: #020617;
+
+      --surface-0: var(--color-neutral-50);
+      --surface-1: #FFFFFF;
+      --surface-2: var(--color-neutral-50);
+      --text-strong: var(--color-neutral-950);
+      --text: var(--color-neutral-800);
+      --text-muted: var(--color-neutral-600);
+      --border: var(--color-neutral-200);
+      --primary: var(--color-primary-600);
+      --primary-hover: var(--color-primary-700);
+
+      --font-header: 'Playfair Display', Georgia, serif;
+      --font-body:   'Inter', system-ui, sans-serif;
+      --font-h1: clamp(2rem, 1.4rem + 3vw, 3.125rem);
+      --font-h2: clamp(1.75rem, 1.3rem + 2.2vw, 2.625rem);
+      --font-h3: clamp(1.5rem, 1.2rem + 1.5vw, 1.875rem);
+      --font-h4: clamp(1.375rem, 1.15rem + 1vw, 1.563rem);
+      --font-h5: clamp(1.125rem, 1.05rem + 0.4vw, 1.188rem);
+      --font-body-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --font-small: 0.6875rem;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+
+      --shadow-0: 0px 0px 0px 0px rgba(0,0,0,0);
+      --shadow-1: 0px 5px 10px 0px rgba(0,0,0,0.15);
+      --shadow-2: 0px 7.5px 15px 5px rgba(0,0,0,0.45);
+      --shadow-card: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 3px 0 rgba(0,0,0,0.04);
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-full: 9999px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root { --surface-0: var(--color-neutral-950); --surface-1: var(--color-neutral-900); --surface-2: var(--color-neutral-800); --text-strong: var(--color-neutral-50); --text: var(--color-neutral-200); --text-muted: var(--color-neutral-400); --border: var(--color-neutral-700); --primary: var(--color-primary-400); --primary-hover: var(--color-primary-300); }
+    }
+    [data-theme="dark"] {
+      --surface-0: var(--color-neutral-950); --surface-1: var(--color-neutral-900);
+      --surface-2: var(--color-neutral-800); --text-strong: var(--color-neutral-50);
+      --text: var(--color-neutral-200); --text-muted: var(--color-neutral-400);
+      --border: var(--color-neutral-700); --primary: var(--color-primary-400);
+      --primary-hover: var(--color-primary-300);
+    }
+
+    /* ── Reset / Base ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-body-size);
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--surface-0);
+      padding: var(--space-8);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    hr { border: none; border-top: 1px solid var(--border); margin: var(--space-10) 0; }
+
+    /* ── Section ────────────────────────────────────────────────────────── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: var(--font-small);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .section { margin-bottom: var(--space-12); }
+
+    /* ── Header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-header);
+      font-size: var(--font-h2);
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+    .page-header p {
+      color: var(--text-muted);
+      margin-top: var(--space-2);
+      font-size: var(--font-small);
+    }
+
+    /* ── Theme Toggle ────────────────────────────────────────────────────── */
+    .theme-toggle {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--font-small); font-weight: 600; color: var(--text-muted);
+      cursor: pointer; padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--border); border-radius: var(--radius-full);
+      background: var(--surface-1); float: right; margin-top: -4px;
+      transition: background 0.15s;
+    }
+    .theme-toggle:hover { background: var(--surface-2); }
+
+    /* ── Color Grid ──────────────────────────────────────────────────────── */
+    .palette-grid { display: flex; flex-direction: column; gap: var(--space-6); }
+    .palette-row { display: flex; gap: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .swatch {
+      flex: 1; height: 72px; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: var(--space-2) var(--space-2);
+      position: relative;
+    }
+    .swatch-label {
+      font-family: var(--font-body); font-size: 10px; font-weight: 600;
+      line-height: 1.2; opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .swatch:hover .swatch-label { opacity: 1; }
+    .swatch-weight {
+      font-size: 9px; font-weight: 500; opacity: 0.6;
+    }
+    .swatch-hex { font-size: 9px; }
+    .swatch--light .swatch-label { color: #1E293B; }
+    .swatch--dark .swatch-label { color: #F8FAFC; }
+
+    /* ── Type Scale ──────────────────────────────────────────────────────── */
+    .type-specimen > * + * { margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--border); }
+    .type-meta { font-size: var(--font-small); color: var(--text-muted); margin-top: var(--space-1); font-family: var(--font-body); }
+
+    /* ── Spacing Ruler ───────────────────────────────────────────────────── */
+    .spacing-ruler { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4); }
+    .spacing-step { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+    .spacing-bar { background: var(--primary); border-radius: var(--radius-sm); width: 32px; }
+    .spacing-name { font-size: 10px; font-weight: 600; color: var(--text-muted); }
+    .spacing-px { font-size: 10px; color: var(--text-muted); }
+
+    /* ── Buttons ─────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 0.75em 1.5em; font-family: var(--font-body);
+      font-size: var(--font-body-size); font-weight: 600; line-height: 1;
+      border-radius: var(--radius-md); border: none; cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+      min-height: 44px; /* WCAG 2.2 target size */
+    }
+    .btn-primary { background: #1D4ED8; color: #fff; }
+    .btn-primary:hover { background: #1E40AF; box-shadow: var(--shadow-1); }
+    .btn-secondary {
+      background: transparent; color: var(--text-strong);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface-2); }
+    .btn-tertiary { background: transparent; color: var(--primary); }
+    .btn-tertiary:hover { text-decoration: underline; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+
+    /* ── Badges ──────────────────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--font-body); font-weight: 500;
+      border-radius: var(--radius-full); text-transform: capitalize;
+    }
+    .badge-sm { padding: 3px 8px; font-size: 13px; }
+    .badge-md { padding: 5px 10px; font-size: 14px; }
+    .badge-success { background: #D1FAE5; color: #065F46; }
+    .badge-info    { background: #DBEAFE; color: #1E40AF; }
+    .badge-warning { background: #FEF3C7; color: #92400E; }
+    .badge-error   { background: #FEE2E2; color: #991B1B; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+
+    [data-theme="dark"] .badge-success { background: #065F46; color: #6EE7B7; }
+    [data-theme="dark"] .badge-info    { background: #1E40AF; color: #93C5FD; }
+    [data-theme="dark"] .badge-warning { background: #92400E; color: #FCD34D; }
+    [data-theme="dark"] .badge-error   { background: #991B1B; color: #FCA5A5; }
+
+    /* ── Card ────────────────────────────────────────────────────────────── */
+    .card-demo { display: flex; flex-wrap: wrap; gap: var(--space-6); }
+    .card {
+      background: var(--surface-1);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      padding: var(--space-4);
+      min-width: 208px; max-width: 280px;
+    }
+    .card-header { font-family: var(--font-header); font-size: var(--font-h4); font-weight: 700; color: var(--text-strong); line-height: 1.2; margin-bottom: var(--space-2); }
+    .card-subhead { font-size: var(--font-small); color: var(--text-muted); margin-bottom: var(--space-4); }
+    .card-body { color: var(--text); margin-bottom: var(--space-4); font-size: var(--font-body-size); }
+    .card-metric { font-size: var(--font-h3); font-family: var(--font-header); font-weight: 700; color: var(--text-strong); letter-spacing: -0.025em; }
+    .card-metric-label { font-size: var(--font-small); color: var(--text-muted); }
+    .card-metric-change { font-size: var(--font-small); font-weight: 600; color: #059669; }
+    .card-metric-change.down { color: #DC2626; }
+
+    /* ── Toast ───────────────────────────────────────────────────────────── */
+    .toast {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      background: var(--surface-1); border: 1px solid var(--border);
+      border-left: 4px solid; border-radius: var(--radius-md);
+      padding: var(--space-4); box-shadow: var(--shadow-1);
+      max-width: 400px; margin-bottom: var(--space-3);
+    }
+    .toast-success { border-left-color: #059669; }
+    .toast-info    { border-left-color: #2563EB; }
+    .toast-warning { border-left-color: #D97706; }
+    .toast-icon { width: 20px; height: 20px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+    .toast-success .toast-icon { background: #D1FAE5; color: #065F46; }
+    .toast-info    .toast-icon { background: #DBEAFE; color: #1E40AF; }
+    .toast-warning .toast-icon { background: #FEF3C7; color: #92400E; }
+    .toast-title { font-weight: 600; font-size: var(--font-body-size); color: var(--text-strong); margin-bottom: 2px; }
+    .toast-msg { font-size: var(--font-small); color: var(--text-muted); }
+
+    /* ── Dashboard Widget Preview ─────────────────────────────────────────── */
+    .widget-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-6); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <button class="theme-toggle" onclick="document.documentElement.toggleAttribute('data-theme', true); this.dataset.theme = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light'; this.textContent = document.documentElement.hasAttribute('data-theme') ? '☀ Light' : '◑ Dark'">◑ Dark</button>
+  <h1>Fintech Dashboard — Design System</h1>
+  <p>Trustworthy · Seed #2563EB · Triadic harmony · Light + Dark · Generated 2026-06-03 with Design Formulas</p>
+</div>
+
+<!-- ── Palette ───────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Color Palette</div>
+  <div class="palette-grid">
+
+    <!-- Primary -->
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:6px;">Primary — Blue H=263°</div>
+      <div class="palette-row">
+        <div class="swatch swatch--light" style="background:#EFF6FF"><div class="swatch-label"><div class="swatch-weight">50</div><div class="swatch-hex">#EFF6FF</div></div></div>
+        <div class="swatch swatch--light" style="background:#DBEAFE"><div class="swatch-label"><div class="swatch-weight">100</div><div class="swatch-hex">#DBEAFE</div></div></div>
+        <div class="swatch swatch--light" style="background:#BFDBFE"><div class="swatch-label"><div class="swatch-weight">200</div><div class="swatch-hex">#BFDBFE</div></div></div>
+        <div class="swatch swatch--light" style="background:#93C5FD"><div class="swatch-label"><div class="swatch-weight">300</div><div class="swatch-hex">#93C5FD</div></div></div>
+        <div class="swatch swatch--light" style="background:#60A5FA"><div class="swatch-label"><div class="swatch-weight">400</div><div class="swatch-hex">#60A5FA</div></div></div>
+        <div class="swatch swatch--dark" style="background:#3B82F6"><div class="swatch-label"><div class="swatch-weight">500</div><div class="swatch-hex">#3B82F6</div></div></div>
+        <div class="swatch swatch--dark" style="background:#2563EB;outline:3px solid #fff;outline-offset:-3px;z-index:1"><div class="swatch-label"><div class="swatch-weight">600 ★</div><div class="swatch-hex">#2563EB</div></div></div>
+        <div class="swatch swatch--dark" style="background:#1D4ED8"><div class="swatch-label"><div class="swatch-weight">700</div><div class="swatch-hex">#1D4ED8</div></div></div>
+        <div class="swatch swatch--dark" style="background:#1E40AF"><div class="swatch-label"><div class="swatch-weight">800</div><div class="swatch-hex">#1E40AF</div></div></div>
+        <div class="swatch swatch--dark" style="background:#1E3A8A"><div class="swatch-label"><div class="swatch-weight">900</div><div class="swatch-hex">#1E3A8A</div></div></div>
+        <div class="swatch swatch--dark" style="background:#172554"><div class="swatch-label"><div class="swatch-weight">950</div><div class="swatch-hex">#172554</div></div></div>
+      </div>
+    </div>
+
+    <!-- Secondary -->
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:6px;">Secondary — Amber H=23°</div>
+      <div class="palette-row">
+        <div class="swatch swatch--light" style="background:#FFFBEB"><div class="swatch-label"><div class="swatch-weight">50</div><div class="swatch-hex">#FFFBEB</div></div></div>
+        <div class="swatch swatch--light" style="background:#FEF3C7"><div class="swatch-label"><div class="swatch-weight">100</div></div></div>
+        <div class="swatch swatch--light" style="background:#FDE68A"><div class="swatch-label"><div class="swatch-weight">200</div></div></div>
+        <div class="swatch swatch--light" style="background:#FCD34D"><div class="swatch-label"><div class="swatch-weight">300</div></div></div>
+        <div class="swatch swatch--light" style="background:#FBBF24"><div class="swatch-label"><div class="swatch-weight">400</div></div></div>
+        <div class="swatch swatch--light" style="background:#F59E0B"><div class="swatch-label"><div class="swatch-weight">500</div></div></div>
+        <div class="swatch swatch--dark" style="background:#D97706"><div class="swatch-label"><div class="swatch-weight">600</div><div class="swatch-hex">#D97706</div></div></div>
+        <div class="swatch swatch--dark" style="background:#B45309"><div class="swatch-label"><div class="swatch-weight">700</div></div></div>
+        <div class="swatch swatch--dark" style="background:#92400E"><div class="swatch-label"><div class="swatch-weight">800</div></div></div>
+        <div class="swatch swatch--dark" style="background:#78350F"><div class="swatch-label"><div class="swatch-weight">900</div></div></div>
+        <div class="swatch swatch--dark" style="background:#451A03"><div class="swatch-label"><div class="swatch-weight">950</div></div></div>
+      </div>
+    </div>
+
+    <!-- Tertiary -->
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:6px;">Tertiary — Emerald H=143°</div>
+      <div class="palette-row">
+        <div class="swatch swatch--light" style="background:#ECFDF5"><div class="swatch-label"><div class="swatch-weight">50</div><div class="swatch-hex">#ECFDF5</div></div></div>
+        <div class="swatch swatch--light" style="background:#D1FAE5"><div class="swatch-label"><div class="swatch-weight">100</div></div></div>
+        <div class="swatch swatch--light" style="background:#A7F3D0"><div class="swatch-label"><div class="swatch-weight">200</div></div></div>
+        <div class="swatch swatch--light" style="background:#6EE7B7"><div class="swatch-label"><div class="swatch-weight">300</div></div></div>
+        <div class="swatch swatch--light" style="background:#34D399"><div class="swatch-label"><div class="swatch-weight">400</div></div></div>
+        <div class="swatch swatch--dark" style="background:#10B981"><div class="swatch-label"><div class="swatch-weight">500</div></div></div>
+        <div class="swatch swatch--dark" style="background:#059669"><div class="swatch-label"><div class="swatch-weight">600</div><div class="swatch-hex">#059669</div></div></div>
+        <div class="swatch swatch--dark" style="background:#047857"><div class="swatch-label"><div class="swatch-weight">700</div></div></div>
+        <div class="swatch swatch--dark" style="background:#065F46"><div class="swatch-label"><div class="swatch-weight">800</div></div></div>
+        <div class="swatch swatch--dark" style="background:#064E3B"><div class="swatch-label"><div class="swatch-weight">900</div></div></div>
+        <div class="swatch swatch--dark" style="background:#022C22"><div class="swatch-label"><div class="swatch-weight">950</div></div></div>
+      </div>
+    </div>
+
+    <!-- Neutral -->
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:6px;">Neutral — Slate (cool grey)</div>
+      <div class="palette-row">
+        <div class="swatch swatch--light" style="background:#F8FAFC"><div class="swatch-label"><div class="swatch-weight">50</div><div class="swatch-hex">#F8FAFC</div></div></div>
+        <div class="swatch swatch--light" style="background:#F1F5F9"><div class="swatch-label"><div class="swatch-weight">100</div></div></div>
+        <div class="swatch swatch--light" style="background:#E2E8F0"><div class="swatch-label"><div class="swatch-weight">200</div></div></div>
+        <div class="swatch swatch--light" style="background:#CBD5E1"><div class="swatch-label"><div class="swatch-weight">300</div></div></div>
+        <div class="swatch swatch--light" style="background:#94A3B8"><div class="swatch-label"><div class="swatch-weight">400</div></div></div>
+        <div class="swatch swatch--dark" style="background:#64748B"><div class="swatch-label"><div class="swatch-weight">500</div></div></div>
+        <div class="swatch swatch--dark" style="background:#475569"><div class="swatch-label"><div class="swatch-weight">600</div></div></div>
+        <div class="swatch swatch--dark" style="background:#334155"><div class="swatch-label"><div class="swatch-weight">700</div></div></div>
+        <div class="swatch swatch--dark" style="background:#1E293B"><div class="swatch-label"><div class="swatch-weight">800</div></div></div>
+        <div class="swatch swatch--dark" style="background:#0F172A"><div class="swatch-label"><div class="swatch-weight">900</div></div></div>
+        <div class="swatch swatch--dark" style="background:#020617"><div class="swatch-label"><div class="swatch-weight">950</div><div class="swatch-hex">#020617</div></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Type Scale ────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Type Scale</div>
+  <div class="type-specimen">
+    <div>
+      <h1 style="font-family:var(--font-header);font-size:var(--font-h1);font-weight:700;color:var(--text-strong);line-height:1.15;letter-spacing:-0.025em;">Account Overview</h1>
+      <div class="type-meta">H1 · Playfair Display 700 · clamp(2rem, 1.4rem+3vw, 3.125rem) · lh 1.15 · ls −0.025em</div>
+    </div>
+    <div>
+      <h2 style="font-family:var(--font-header);font-size:var(--font-h2);font-weight:700;color:var(--text-strong);line-height:1.15;letter-spacing:-0.025em;">Portfolio Performance</h2>
+      <div class="type-meta">H2 · Playfair Display 700 · clamp(1.75rem, 1.3rem+2.2vw, 2.625rem) · lh 1.15 · ls −0.025em</div>
+    </div>
+    <div>
+      <h3 style="font-family:var(--font-header);font-size:var(--font-h3);font-weight:600;color:var(--text-strong);line-height:1.2;">Recent Transactions</h3>
+      <div class="type-meta">H3 · Playfair Display 600 · clamp(1.5rem, 1.2rem+1.5vw, 1.875rem) · lh 1.2</div>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-body);font-size:var(--font-h4);font-weight:600;color:var(--text-strong);line-height:1.2;">Asset Allocation</h4>
+      <div class="type-meta">H4 · Inter 600 · clamp(1.375rem, 1.15rem+1vw, 1.563rem) · lh 1.2</div>
+    </div>
+    <div>
+      <h5 style="font-family:var(--font-body);font-size:var(--font-h5);font-weight:600;color:var(--text-strong);line-height:1.25;">Market Cap Summary</h5>
+      <div class="type-meta">H5 · Inter 600 · clamp(1.125rem, 1.05rem+0.4vw, 1.188rem) · lh 1.25</div>
+    </div>
+    <div>
+      <p style="color:var(--text);max-width:60ch;">Your portfolio has grown by 12.4% over the past quarter, driven primarily by technology holdings and international exposure in emerging markets. Review your allocation to stay within your target risk range.</p>
+      <div class="type-meta">Body · Inter 400 · clamp(1rem, 0.95rem+0.25vw, 1.125rem) · lh 1.5</div>
+    </div>
+    <div>
+      <p style="font-size:var(--font-small);color:var(--text-muted);font-weight:500;">Last updated · 3 June 2026 · Data provided by Acme Financial Ltd · Not investment advice</p>
+      <div class="type-meta">Small · Inter 500 · 11px · lh 1.5</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Spacing Ruler ──────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Spacing (4-point system)</div>
+  <div class="spacing-ruler">
+    <div class="spacing-step"><div class="spacing-bar" style="height:4px"></div><div class="spacing-name">space-1</div><div class="spacing-px">4px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:8px"></div><div class="spacing-name">space-2</div><div class="spacing-px">8px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:12px"></div><div class="spacing-name">space-3</div><div class="spacing-px">12px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:16px"></div><div class="spacing-name">space-4</div><div class="spacing-px">16px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:20px"></div><div class="spacing-name">space-5</div><div class="spacing-px">20px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:24px"></div><div class="spacing-name">space-6</div><div class="spacing-px">24px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:32px"></div><div class="spacing-name">space-8</div><div class="spacing-px">32px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:40px"></div><div class="spacing-name">space-10</div><div class="spacing-px">40px</div></div>
+    <div class="spacing-step"><div class="spacing-bar" style="height:48px"></div><div class="spacing-name">space-12</div><div class="spacing-px">48px</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Buttons ───────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Buttons</div>
+  <div class="btn-row">
+    <button class="btn btn-primary">Transfer Funds</button>
+    <button class="btn btn-secondary">View Statement</button>
+    <button class="btn btn-tertiary">Cancel</button>
+  </div>
+  <p style="margin-top:var(--space-3);font-size:var(--font-small);color:var(--text-muted);">
+    Primary: bg primary-700 (#1D4ED8) · white text · 6.8:1 AA ✓ &nbsp;|&nbsp;
+    Padding: 1em 2em &nbsp;|&nbsp; Min height: 44px (WCAG 2.2 target) &nbsp;|&nbsp; radius-md (8px)
+  </p>
+</div>
+
+<hr>
+
+<!-- ── Badges ────────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Badges</div>
+  <div class="badge-row">
+    <span class="badge badge-sm badge-success">Completed</span>
+    <span class="badge badge-sm badge-info">Active</span>
+    <span class="badge badge-sm badge-warning">Pending</span>
+    <span class="badge badge-sm badge-error">Failed</span>
+    <span class="badge badge-md badge-success">Verified</span>
+    <span class="badge badge-md badge-info">Published</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Cards ─────────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Cards</div>
+  <div class="card-demo">
+    <div class="card">
+      <div class="card-subhead">Total Balance</div>
+      <div class="card-metric">$148,230</div>
+      <div class="card-metric-change">▲ +2.4% this month</div>
+    </div>
+    <div class="card">
+      <div class="card-header">Q2 Returns</div>
+      <div class="card-subhead">Equity portfolio · Apr–Jun 2026</div>
+      <div class="card-body">Outperformed benchmark by 1.8 percentage points, driven by tech allocation.</div>
+      <button class="btn btn-primary" style="font-size:14px;padding:0.6em 1.2em;min-height:36px;">View Details</button>
+    </div>
+    <div class="card">
+      <div class="card-subhead">Risk Score</div>
+      <div class="card-metric" style="color:#D97706;">6.2<span style="font-size:1rem;font-weight:400;color:var(--text-muted)">/10</span></div>
+      <div style="font-size:var(--font-small);color:var(--text-muted);margin-top:var(--space-2);">Moderate — within target range</div>
+      <span class="badge badge-sm badge-warning" style="margin-top:var(--space-3);">Review due</span>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Toasts ────────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Toasts (dismiss after 5s · max 2 visible)</div>
+  <div class="toast toast-success">
+    <div class="toast-icon">✓</div>
+    <div><div class="toast-title">Transfer complete</div><div class="toast-msg">$5,000 sent to J. Pelatari — view transaction</div></div>
+  </div>
+  <div class="toast toast-info">
+    <div class="toast-icon">i</div>
+    <div><div class="toast-title">Statement ready</div><div class="toast-msg">Your June 2026 statement is now available to download.</div></div>
+  </div>
+  <div class="toast toast-warning">
+    <div class="toast-icon">!</div>
+    <div><div class="toast-title">Verification required</div><div class="toast-msg">Complete identity verification to raise your transfer limit.</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ── Shadows ───────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Shadow Tiers</div>
+  <div style="display:flex;gap:var(--space-8);flex-wrap:wrap;align-items:flex-start;padding:var(--space-6) 0;">
+    <div style="background:var(--surface-1);border-radius:var(--radius-md);padding:var(--space-6) var(--space-8);box-shadow:var(--shadow-0);border:1px solid var(--border);">
+      <div style="font-size:var(--font-small);font-weight:600;color:var(--text-muted);">Shadow 0</div>
+      <div style="font-size:var(--font-small);color:var(--text-muted);">Flat</div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:var(--radius-md);padding:var(--space-6) var(--space-8);box-shadow:var(--shadow-card);">
+      <div style="font-size:var(--font-small);font-weight:600;color:var(--text-muted);">Shadow Card</div>
+      <div style="font-size:var(--font-small);color:var(--text-muted);">Cards</div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:var(--radius-md);padding:var(--space-6) var(--space-8);box-shadow:var(--shadow-1);">
+      <div style="font-size:var(--font-small);font-weight:600;color:var(--text-muted);">Shadow 1</div>
+      <div style="font-size:var(--font-small);color:var(--text-muted);">Raised elements</div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:var(--radius-md);padding:var(--space-6) var(--space-8);box-shadow:var(--shadow-2);">
+      <div style="font-size:var(--font-small);font-weight:600;color:var(--text-muted);">Shadow 2</div>
+      <div style="font-size:var(--font-small);color:var(--text-muted);">Modals · dropdowns</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<p style="font-size:var(--font-small);color:var(--text-muted);text-align:center;padding-bottom:var(--space-8);">
+  Design Formulas v0.1 · design-formulas:scaffold · Hover over swatches to see HEX values
+</p>
+
+<script>
+  // Restore theme toggle label on load (in case OS dark is active)
+  (function() {
+    var btn = document.querySelector('.theme-toggle');
+    if (document.documentElement.hasAttribute('data-theme')) {
+      btn.textContent = '☀ Light';
+    }
+  })();
+</script>
+</body>
+</html>

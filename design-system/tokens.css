@@ -1,0 +1,131 @@
+/*
+ * Design Formulas — Fintech Dashboard
+ * Brief:     trustworthy, seed #2563EB, triadic harmony, light + dark
+ * Harmony:   Triadic — Primary (Blue H≈263°) · Secondary (Amber H≈23°) · Tertiary (Emerald H≈143°) · Neutral (Slate)
+ * Source:    OKLCH ladder (color.md §4); Tailwind-anchored HEX (seed = blue-600 exact match)
+ * Typefaces: Playfair Display (headers) · Inter (body/UI)
+ * Note:      Components reference semantic tokens only — never raw ladder weights.
+ */
+
+/* ─── Ladder: Primary (Blue) ─────────────────────────────────────── */
+:root {
+  --color-primary-50:  #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-400: #60A5FA;
+  --color-primary-500: #3B82F6;
+  --color-primary-600: #2563EB; /* seed */
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #172554;
+
+  /* ─── Ladder: Secondary (Amber H≈23°) ─────────────────────────── */
+  --color-secondary-50:  #FFFBEB;
+  --color-secondary-100: #FEF3C7;
+  --color-secondary-200: #FDE68A;
+  --color-secondary-300: #FCD34D;
+  --color-secondary-400: #FBBF24;
+  --color-secondary-500: #F59E0B;
+  --color-secondary-600: #D97706;
+  --color-secondary-700: #B45309;
+  --color-secondary-800: #92400E;
+  --color-secondary-900: #78350F;
+  --color-secondary-950: #451A03;
+
+  /* ─── Ladder: Tertiary (Emerald H≈143°) ───────────────────────── */
+  --color-tertiary-50:  #ECFDF5;
+  --color-tertiary-100: #D1FAE5;
+  --color-tertiary-200: #A7F3D0;
+  --color-tertiary-300: #6EE7B7;
+  --color-tertiary-400: #34D399;
+  --color-tertiary-500: #10B981;
+  --color-tertiary-600: #059669;
+  --color-tertiary-700: #047857;
+  --color-tertiary-800: #065F46;
+  --color-tertiary-900: #064E3B;
+  --color-tertiary-950: #022C22;
+
+  /* ─── Ladder: Neutral (Slate, H≈263° low-C) ──────────────────── */
+  --color-neutral-50:  #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+  --color-neutral-950: #020617;
+
+  /* ─── Semantic — Light (default) ─────────────────────────────── */
+  --surface-0:      var(--color-neutral-50);   /* app background */
+  --surface-1:      #FFFFFF;                   /* card / panel */
+  --surface-2:      var(--color-neutral-50);   /* elevated / popover */
+  --text-strong:    var(--color-neutral-950);  /* headings  — contrast 19.9:1 on surface-1 */
+  --text:           var(--color-neutral-800);  /* body text — contrast 13.8:1 on surface-1 */
+  --text-muted:     var(--color-neutral-600);  /* subtext   — contrast  7.2:1 on surface-1 */
+  --border:         var(--color-neutral-200);
+  --primary:        var(--color-primary-600);  /* #2563EB, contrast 5.2:1 on white (AA large/UI) */
+  --primary-hover:  var(--color-primary-700);  /* #1D4ED8, contrast 6.8:1 on white (AA) */
+
+  /* ─── Typography ──────────────────────────────────────────────── */
+  --font-header:    'Playfair Display', Georgia, serif;
+  --font-body:      'Inter', system-ui, sans-serif;
+
+  --font-h1:        clamp(2rem,    1.4rem + 3vw,    3.125rem);  /* 32→50px */
+  --font-h2:        clamp(1.75rem, 1.3rem + 2.2vw,  2.625rem);  /* 28→42px */
+  --font-h3:        clamp(1.5rem,  1.2rem + 1.5vw,  1.875rem);  /* 24→30px */
+  --font-h4:        clamp(1.375rem,1.15rem + 1vw,   1.563rem);  /* 22→25px */
+  --font-h5:        clamp(1.125rem,1.05rem + 0.4vw, 1.188rem);  /* 18→19px */
+  --font-body-size: clamp(1rem,    0.95rem + 0.25vw,1.125rem);  /* 16→18px */
+  --font-small:     clamp(0.6875rem,0.66rem + 0.1vw,0.6875rem); /* 11px */
+
+  --lh-h1-h2:    1.15;
+  --lh-h3-h5:    1.2;
+  --lh-body:     1.5;
+  --ls-h1:       -0.025em;
+  --ls-h2:       -0.025em;
+
+  /* ─── Spacing (4-point system) ────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+
+  /* ─── Shadows ─────────────────────────────────────────────────── */
+  --shadow-0:    0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --shadow-1:    0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  --shadow-2:    0px 7.5px 15px 5px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+
+  /* ─── Radii ───────────────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-full: 9999px;
+}
+
+/* ─── Semantic — Dark ─────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root { --surface-0: var(--color-neutral-950); --surface-1: var(--color-neutral-900); --surface-2: var(--color-neutral-800); --text-strong: var(--color-neutral-50); --text: var(--color-neutral-200); --text-muted: var(--color-neutral-400); --border: var(--color-neutral-700); --primary: var(--color-primary-400); --primary-hover: var(--color-primary-300); }
+}
+
+[data-theme="dark"] {
+  --surface-0:      var(--color-neutral-950);
+  --surface-1:      var(--color-neutral-900);
+  --surface-2:      var(--color-neutral-800);
+  --text-strong:    var(--color-neutral-50);
+  --text:           var(--color-neutral-200);
+  --text-muted:     var(--color-neutral-400);
+  --border:         var(--color-neutral-700);
+  --primary:        var(--color-primary-400);
+  --primary-hover:  var(--color-primary-300);
+}

@@ -1,0 +1,122 @@
+// Design Formulas — Fintech Dashboard
+// Brief: trustworthy · seed #2563EB · triadic · light+dark
+// Usage: @use '_tokens' as t; then t.$color-primary-600 or use CSS custom properties from tokens.css
+
+// ─── Primary (Blue) ──────────────────────────────────────────────────────────
+$color-primary-50:  #EFF6FF;
+$color-primary-100: #DBEAFE;
+$color-primary-200: #BFDBFE;
+$color-primary-300: #93C5FD;
+$color-primary-400: #60A5FA;
+$color-primary-500: #3B82F6;
+$color-primary-600: #2563EB; // seed
+$color-primary-700: #1D4ED8;
+$color-primary-800: #1E40AF;
+$color-primary-900: #1E3A8A;
+$color-primary-950: #172554;
+
+// ─── Secondary (Amber) ───────────────────────────────────────────────────────
+$color-secondary-50:  #FFFBEB;
+$color-secondary-100: #FEF3C7;
+$color-secondary-200: #FDE68A;
+$color-secondary-300: #FCD34D;
+$color-secondary-400: #FBBF24;
+$color-secondary-500: #F59E0B;
+$color-secondary-600: #D97706;
+$color-secondary-700: #B45309;
+$color-secondary-800: #92400E;
+$color-secondary-900: #78350F;
+$color-secondary-950: #451A03;
+
+// ─── Tertiary (Emerald) ───────────────────────────────────────────────────────
+$color-tertiary-50:  #ECFDF5;
+$color-tertiary-100: #D1FAE5;
+$color-tertiary-200: #A7F3D0;
+$color-tertiary-300: #6EE7B7;
+$color-tertiary-400: #34D399;
+$color-tertiary-500: #10B981;
+$color-tertiary-600: #059669;
+$color-tertiary-700: #047857;
+$color-tertiary-800: #065F46;
+$color-tertiary-900: #064E3B;
+$color-tertiary-950: #022C22;
+
+// ─── Neutral (Slate) ──────────────────────────────────────────────────────────
+$color-neutral-50:  #F8FAFC;
+$color-neutral-100: #F1F5F9;
+$color-neutral-200: #E2E8F0;
+$color-neutral-300: #CBD5E1;
+$color-neutral-400: #94A3B8;
+$color-neutral-500: #64748B;
+$color-neutral-600: #475569;
+$color-neutral-700: #334155;
+$color-neutral-800: #1E293B;
+$color-neutral-900: #0F172A;
+$color-neutral-950: #020617;
+
+// ─── Typography ──────────────────────────────────────────────────────────────
+$font-header: 'Playfair Display', Georgia, serif;
+$font-body:   'Inter', system-ui, sans-serif;
+
+// ─── Spacing ──────────────────────────────────────────────────────────────────
+$space-1:  4px;
+$space-2:  8px;
+$space-3:  12px;
+$space-4:  16px;
+$space-5:  20px;
+$space-6:  24px;
+$space-8:  32px;
+$space-10: 40px;
+$space-12: 48px;
+
+// ─── Vuetify 3 Theme Object ───────────────────────────────────────────────────
+// Usage in main.ts:
+//   import { createVuetify } from 'vuetify'
+//   import { vuetifyTheme } from './_tokens.scss' // if using CSS modules
+//   OR copy the $vuetify-theme map values directly:
+//
+//   createVuetify({ theme: { themes: { light: {...}, dark: {...} } } })
+
+$vuetify-theme-light: (
+  'dark': false,
+  'colors': (
+    'primary':        #1D4ED8,  // primary-700 — AA 6.8:1 with white button text
+    'primary-darken1': #1E40AF,
+    'secondary':      #D97706,  // secondary-600
+    'secondary-darken1': #B45309,
+    'accent':         #10B981,  // tertiary-500
+    'success':        #059669,  // tertiary-600
+    'info':           #3B82F6,  // primary-500
+    'warning':        #F59E0B,  // secondary-500
+    'error':          #DC2626,
+    'background':     #F8FAFC,  // neutral-50
+    'surface':        #FFFFFF,
+    'surface-variant': #F1F5F9, // neutral-100
+    'on-primary':     #FFFFFF,
+    'on-secondary':   #FFFFFF,
+    'on-surface':     #1E293B,  // neutral-800
+    'on-background':  #1E293B,
+  ),
+);
+
+$vuetify-theme-dark: (
+  'dark': true,
+  'colors': (
+    'primary':        #60A5FA,  // primary-400
+    'primary-darken1': #93C5FD, // primary-300 (hover)
+    'secondary':      #FBBF24,  // secondary-400
+    'secondary-darken1': #FCD34D,
+    'accent':         #34D399,  // tertiary-400
+    'success':        #34D399,  // tertiary-400
+    'info':           #60A5FA,  // primary-400
+    'warning':        #FBBF24,  // secondary-400
+    'error':          #F87171,
+    'background':     #020617,  // neutral-950
+    'surface':        #0F172A,  // neutral-900
+    'surface-variant': #1E293B, // neutral-800
+    'on-primary':     #020617,
+    'on-secondary':   #020617,
+    'on-surface':     #E2E8F0,  // neutral-200
+    'on-background':  #E2E8F0,
+  ),
+);
