@@ -83,6 +83,12 @@ hierarchy. Instead define **semantic tokens** mapped per theme:
 Elevation in dark mode comes from **lighter surfaces**, not bigger shadows. Pick the per-step weights
 from the ladder; components reference the *semantic* token, never a raw weight.
 
+**Status tokens** (used by component states — see `states.md`): `--success` (green),
+`--warning` (amber), `--danger` (red), `--info` (blue/primary). Map them to a mid-weight (≈500–600) of
+the matching hue: in a triadic blue/amber/emerald palette → `success`=tertiary-600, `warning`=secondary-700,
+`info`=primary-600, and add a dedicated **red** for `danger` (not on the triad). In dark themes use the
+≈400 weight. Components bind to these names, never to raw hues.
+
 ## 6. Contrast & accessibility — WCAG 2.2
 
 - **Contrast ratio** between foreground & background runs 1:1 (none) to 21:1 (black on white).

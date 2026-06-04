@@ -57,11 +57,14 @@ only when invoked.
   (logo→palette→type→imagery→grid→components), component states, design-system concepts.
 - **`scripts/contrast.py`** — `/scaffold` computes exact WCAG 2.2 ratios instead of estimating them.
 
-**v0.4 adds:** `/design-formulas:wireframe` — low-fidelity grayscale wireframes (the process step before
-`scaffold`), with a bundled `assets/wireframe-kit.css`.
+**v0.4 added:** `/design-formulas:wireframe` — low-fidelity grayscale wireframes (`assets/wireframe-kit.css`).
 
-**Later:** deeper per-component state specs (hover/focus/disabled CSS); publishing to a shared/remote
-marketplace (currently installs from this local repo).
+**v0.5 adds:** **per-component state CSS** — `assets/components.css` (a token-driven library covering
+hover/focus/active/disabled/loading, valid/error inputs, and tab/accordion/table/toast variants),
+`states.md` (the state-matrix contract), and **status semantic tokens** (`--success/--warning/--danger/--info`).
+`/scaffold` now ships live, interactive component states in its styleguide.
+
+**Later:** publishing to a shared/remote marketplace (currently installs from this local repo).
 
 ## Provenance
 

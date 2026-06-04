@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>design-formulas — component states</title>
+<style>
+/* assets/components.css (inlined) */
+.df-btn{font:600 14px/1 inherit;padding:1em 2em;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-2);transition:background .15s,box-shadow .15s,opacity .15s;background:var(--primary);color:var(--primary-contrast)}
+.df-btn:hover{background:var(--primary-hover);box-shadow:var(--shadow-1)}
+.df-btn:active{transform:translateY(1px)}
+.df-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-btn[disabled],.df-btn.is-disabled{opacity:.5;cursor:not-allowed;box-shadow:none;background:var(--primary)}
+.df-btn.is-loading{color:transparent;pointer-events:none;position:relative}
+.df-btn.is-loading::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--primary-contrast);border-top-color:transparent;border-radius:50%;animation:df-spin .6s linear infinite}
+@keyframes df-spin{to{transform:rotate(360deg)}}
+.df-btn--secondary{background:var(--surface-2);color:var(--text);border-color:var(--border)}
+.df-btn--secondary:hover{background:var(--border)}
+.df-btn--tertiary{background:transparent;color:var(--text);border-color:transparent}
+.df-btn--tertiary:hover{background:var(--surface-2)}
+.df-field{display:flex;flex-direction:column;gap:var(--space-1);margin-bottom:var(--space-4)}
+.df-label{font-size:13px;font-weight:600;color:var(--text)}
+.df-input,.df-textarea,.df-select{font:inherit;font-size:16px;color:var(--text);background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-4);transition:border-color .15s,box-shadow .15s}
+.df-input{height:40px}.df-textarea{min-height:80px;resize:vertical}
+.df-input:focus,.df-textarea:focus,.df-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 25%,transparent)}
+.df-input:disabled,.df-textarea:disabled{background:var(--surface-2);color:var(--text-muted);cursor:not-allowed}
+.df-field.is-valid .df-input{border-color:var(--success)}
+.df-field.is-error .df-input{border-color:var(--danger)}
+.df-help{font-size:12px;color:var(--text-muted)}
+.df-field.is-error .df-help{color:var(--danger)}
+.df-check{display:inline-flex;gap:var(--space-2);align-items:center;cursor:pointer;font-size:14px;color:var(--text)}
+.df-check input{appearance:none;width:16px;height:16px;border:1.5px solid var(--border);background:var(--surface-1);cursor:pointer}
+.df-check input[type=checkbox]{border-radius:3px}.df-check input[type=radio]{border-radius:50%}
+.df-check input:checked{background:var(--primary);border-color:var(--primary)}
+.df-check input[type=checkbox]:checked{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M6.5 11L3 7.5l1-1L6.5 9 12 3.5l1 1z'/%3E%3C/svg%3E")}
+.df-check input:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-check input:disabled{opacity:.5;cursor:not-allowed}
+.df-toggle{position:relative;width:48px;height:26px;display:inline-block}
+.df-toggle input{appearance:none;width:48px;height:26px;border-radius:999px;background:var(--border);cursor:pointer;transition:background .15s}
+.df-toggle input:checked{background:var(--primary)}
+.df-toggle input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:var(--shadow-card)}
+.df-toggle input:checked::after{left:25px}
+.df-toggle input:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-badge{display:inline-block;padding:3px 8px;font-size:13px;font-weight:600;border-radius:999px;line-height:1;background:var(--surface-2);color:var(--text)}
+.df-badge--success{background:color-mix(in oklab,var(--success) 15%,var(--surface-1));color:var(--success)}
+.df-badge--info{background:color-mix(in oklab,var(--info) 15%,var(--surface-1));color:var(--info)}
+.df-badge--danger{background:color-mix(in oklab,var(--danger) 15%,var(--surface-1));color:var(--danger)}
+.df-card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-4);box-shadow:var(--shadow-card);transition:box-shadow .15s,transform .15s}
+.df-card.is-interactive:hover{box-shadow:var(--shadow-1);transform:translateY(-2px)}
+.df-tabs{display:flex;gap:var(--space-2);border-bottom:1px solid var(--border)}
+.df-tab{font-size:14px;line-height:24px;font-weight:400;color:var(--text-muted);padding:var(--space-2) var(--space-4);border:0;border-bottom:2px solid transparent;background:none;cursor:pointer}
+.df-tab:hover{color:var(--text)}
+.df-tab[aria-selected=true]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--primary)}
+.df-tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-acc{border-bottom:1px solid var(--border)}
+.df-acc-header{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;font-size:15px;color:var(--text-strong);padding:var(--space-3) 0;background:none;border:0;cursor:pointer}
+.df-acc-header:hover{color:var(--primary)}
+.df-acc-caret{transition:transform .15s}
+.df-acc-header[aria-expanded=true] .df-acc-caret{transform:rotate(180deg)}
+.df-acc-panel{font-size:12px;color:var(--text-muted);padding:0 0 var(--space-3)}
+.df-table{width:100%;border-collapse:collapse;font-size:14px}
+.df-table th{text-align:left;font-weight:600;color:var(--text-strong);padding:var(--space-3) var(--space-4);border-bottom:2px solid var(--border)}
+.df-table td{padding:var(--space-3) var(--space-4);color:var(--text);border-bottom:1px solid var(--border)}
+.df-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+.df-table tbody tr:nth-child(even){background:var(--surface-2)}
+.df-table tbody tr:hover{background:color-mix(in oklab,var(--primary) 6%,var(--surface-1))}
+.df-table tbody tr[aria-selected=true]{background:color-mix(in oklab,var(--primary) 12%,var(--surface-1))}
+.df-avatar{position:relative;width:40px;height:40px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:inline-grid;place-items:center;color:var(--text-muted);font-size:13px;font-weight:600}
+.df-avatar .df-status{position:absolute;right:0;bottom:0;width:10px;height:10px;border-radius:50%;border:2px solid var(--surface-1)}
+.df-avatar .df-status.online{background:var(--success)}
+.df-tip{position:relative;display:inline-block}
+.df-tip .df-tip-box{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);max-width:208px;background:var(--text-strong);color:var(--surface-1);font-size:12px;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);opacity:0;pointer-events:none;transition:opacity .12s;text-align:center}
+.df-tip:hover .df-tip-box,.df-tip:focus-within .df-tip-box{opacity:1}
+.df-toast{display:flex;gap:var(--space-3);align-items:start;background:var(--surface-1);border:1px solid var(--border);border-left:4px solid var(--info);border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);box-shadow:var(--shadow-1);max-width:360px}
+.df-toast--success{border-left-color:var(--success)}.df-toast--danger{border-left-color:var(--danger)}.df-toast--warning{border-left-color:var(--warning)}
+
+/* resolved fintech tokens (what /scaffold emits) — override the kit fallbacks */
+:root{
+  --surface-0:#f8fafc;--surface-1:#fff;--surface-2:#f1f5f9;--border:#e2e8f0;
+  --text-strong:#020617;--text:#1e293b;--text-muted:#475569;
+  --primary:#2563eb;--primary-hover:#1d4ed8;--primary-contrast:#fff;
+  --success:#059669;--warning:#b45309;--danger:#dc2626;--info:#2563eb;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;
+  --radius:6px;--radius-sm:4px;
+  --shadow-1:0 5px 10px 0 rgba(0,0,0,.15);--shadow-2:0 7.5px 15px 5px rgba(0,0,0,.45);
+  --shadow-card:0 1px 3px 0 rgba(0,0,0,.1),0 1px 3px 0 rgba(0,0,0,.04);
+  --focus-ring:0 0 0 2px var(--surface-1),0 0 0 4px var(--primary);
+}
+[data-theme=dark]{
+  --surface-0:#020617;--surface-1:#0f172a;--surface-2:#1e293b;--border:#334155;
+  --text-strong:#f8fafc;--text:#e2e8f0;--text-muted:#94a3b8;
+  --primary:#60a5fa;--primary-hover:#93c5fd;--primary-contrast:#020617;
+  --success:#34d399;--warning:#fbbf24;--danger:#f87171;--info:#60a5fa;
+}
+body{margin:0;background:var(--surface-0);color:var(--text);font:14px/1.5 ui-sans-serif,system-ui,sans-serif;padding:32px}
+.wrap{max-width:980px;margin:0 auto}
+h1{color:var(--text-strong)}h2{color:var(--text-strong);margin:32px 0 12px;font-size:18px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.topbar{display:flex;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <h1>Component states</h1>
+  <button class="df-btn df-btn--secondary" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'">Toggle theme</button>
+</div>
+<p style="color:var(--text-muted)">Live states from <code>assets/components.css</code> on the fintech palette. Hover, focus (Tab), and toggle the theme.</p>
+
+<h2>Buttons — default · hover · active · focus · disabled · loading</h2>
+<div class="row">
+  <button class="df-btn">Primary</button>
+  <button class="df-btn is-loading">Loading</button>
+  <button class="df-btn" disabled>Disabled</button>
+  <button class="df-btn df-btn--secondary">Secondary</button>
+  <button class="df-btn df-btn--tertiary">Tertiary</button>
+</div>
+
+<h2>Inputs — default · focus · valid · error · disabled</h2>
+<div class="grid3">
+  <div class="df-field"><label class="df-label">Email</label><input class="df-input" placeholder="you@co.com"><span class="df-help">We'll never share it.</span></div>
+  <div class="df-field is-valid"><label class="df-label">Email (valid)</label><input class="df-input" value="ok@co.com"><span class="df-help">Looks good.</span></div>
+  <div class="df-field is-error"><label class="df-label">Email (error)</label><input class="df-input" value="nope"><span class="df-help">Enter a valid email.</span></div>
+</div>
+<div class="row"><input class="df-input" placeholder="Focus me (Tab) — primary ring" style="width:280px"><input class="df-input" value="Disabled" disabled style="width:160px"></div>
+
+<h2>Checkbox · Radio · Toggle</h2>
+<div class="row">
+  <label class="df-check"><input type="checkbox" checked> Checked</label>
+  <label class="df-check"><input type="checkbox"> Unchecked</label>
+  <label class="df-check"><input type="radio" name="r" checked> Radio A</label>
+  <label class="df-check"><input type="radio" name="r"> Radio B</label>
+  <span class="df-toggle"><input type="checkbox" checked></span>
+  <span class="df-toggle"><input type="checkbox"></span>
+</div>
+
+<h2>Badges · Avatar · Tooltip</h2>
+<div class="row">
+  <span class="df-badge--success df-badge">Approved</span>
+  <span class="df-badge df-badge--info">Live</span>
+  <span class="df-badge df-badge--danger">Failed</span>
+  <span class="df-avatar">JD<span class="df-status online"></span></span>
+  <span class="df-tip" tabindex="0">[ hover for tooltip ]<span class="df-tip-box">Calculated at the warehouse on packaging.</span></span>
+</div>
+
+<h2>Tabs · Accordion</h2>
+<div class="df-tabs" role="tablist">
+  <button class="df-tab" role="tab" aria-selected="true">Saved</button>
+  <button class="df-tab" role="tab" aria-selected="false">Inbox</button>
+  <button class="df-tab" role="tab" aria-selected="false">Profile</button>
+</div>
+<div class="df-acc" style="margin-top:16px">
+  <button class="df-acc-header" aria-expanded="true">How can I pay for a course? <span class="df-acc-caret">▾</span></button>
+  <div class="df-acc-panel">All major cards via the billing page.</div>
+</div>
+
+<h2>Table — header · zebra · hover · selected</h2>
+<table class="df-table">
+  <thead><tr><th>Product</th><th>Category</th><th class="num">Price</th></tr></thead>
+  <tbody>
+    <tr><td>Avocado toast</td><td>Breakfast</td><td class="num">$10.00</td></tr>
+    <tr aria-selected="true"><td>Filet mignon</td><td>Dinner</td><td class="num">$30.00</td></tr>
+    <tr><td>Granola</td><td>Snacks</td><td class="num">$7.00</td></tr>
+  </tbody>
+</table>
+
+<h2>Toasts — info · success · warning · danger</h2>
+<div class="row" style="flex-direction:column;align-items:stretch;gap:8px">
+  <div class="df-toast"><b style="color:var(--text-strong)">Heads up</b> — the message text goes here.</div>
+  <div class="df-toast df-toast--success"><b style="color:var(--text-strong)">Success</b> — your product was created.</div>
+  <div class="df-toast df-toast--danger"><b style="color:var(--text-strong)">Error</b> — name is required.</div>
+</div>
+</div>
+</body>
+</html>

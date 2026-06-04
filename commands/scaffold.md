@@ -29,7 +29,9 @@ From `$ARGUMENTS` (or by asking the user, one point at a time, only for what's m
    step's `chroma_mult`. **Convert each `oklch(L C H)` step to sRGB HEX** (clamp to gamut). Emit both
    the OKLCH and the HEX.
 3. Add **semantic tokens** for light and dark per `color.md` §5 (surface-0/1/2, text-strong/text/muted,
-   border, primary, primary-hover). **Do not invert the ladder for dark mode** — map semantic tokens.
+   border, primary, primary-hover, primary-contrast) **plus status tokens** (`--success` `--warning`
+   `--danger` `--info` — map to mid-weights; add a dedicated red for danger). **Do not invert the ladder
+   for dark mode** — map semantic tokens.
 4. **Verify contrast with the bundled tool — do NOT estimate ratios by eye.** Run
    `python3 ${CLAUDE_PLUGIN_ROOT}/scripts/contrast.py "<fg>/<bg>" ...` for every text/surface and
    button pair (e.g. `text/surface-1`, `text-muted/surface-1`, `white/primary-600`, dark-theme pairs).
@@ -66,9 +68,14 @@ Write a `design-system/` folder (or the path the user gives). For each selected 
   **imagery & iconography** (style-by-role: outline=nav, solid=forms), **spacing scale**, **components**
   with their **states** (default/hover/active/disabled/loading; +success/error/warning for inputs), the
   **exact contrast table** from the tool, and the modernization notes.
-- **`styleguide.html`** — a single standalone file (inline CSS using the generated `:root` vars):
-  color swatch grid (all ladders, with HEX labels), a type-scale specimen, spacing ruler, and sample
-  button/badge/card so the system can be eyeballed in a browser.
+- **`components.css`** — copy `${CLAUDE_PLUGIN_ROOT}/assets/components.css`; it already binds to the
+  generated token variables (`--surface-*`, `--text-*`, `--primary*`, status tokens, `--space-*`,
+  `--shadow-*`), giving real components with **all states** (hover/focus/active/disabled/loading;
+  valid/error for inputs; tabs/accordion/table/toast variants). No edits needed — it inherits the brief's palette.
+- **`styleguide.html`** — a single standalone file (inline `tokens.css` + `components.css`): color swatch
+  grid (all ladders, HEX labels), type-scale specimen, spacing ruler, and a **live component-states
+  gallery** (button hover/disabled/loading, input focus/error, checkbox/radio/toggle, tabs, table with
+  zebra/hover, badges, toast variants) so states can be eyeballed and interacted with in a browser.
 
 ## Step 6 — Report
 

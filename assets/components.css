@@ -1,0 +1,122 @@
+/* design-formulas — token-driven component library with full state coverage
+ * Binds to the CSS variables /design-formulas:scaffold emits (--surface-*, --text-*, --primary*,
+ * --space-*, --shadow-*, status colors). The :root block below is a FALLBACK so this file works
+ * standalone; scaffold's tokens.css overrides it. State rules follow components.md + states.md.
+ */
+:root {
+  /* fallbacks — overridden by scaffold tokens.css */
+  --surface-1:#fff; --surface-2:#f8fafc; --border:#e2e8f0;
+  --text-strong:#020617; --text:#1e293b; --text-muted:#475569;
+  --primary:#2563eb; --primary-hover:#1d4ed8; --primary-contrast:#fff;
+  --success:#059669; --warning:#b45309; --danger:#dc2626; --info:#2563eb;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px;
+  --radius:6px; --radius-sm:4px;
+  --shadow-1:0 5px 10px 0 rgba(0,0,0,.15);
+  --shadow-2:0 7.5px 15px 5px rgba(0,0,0,.45);
+  --shadow-card:0 1px 3px 0 rgba(0,0,0,.1),0 1px 3px 0 rgba(0,0,0,.04);
+  --focus-ring:0 0 0 2px var(--surface-1),0 0 0 4px var(--primary); /* WCAG 2.2: ≥2px, ≥3:1 */
+}
+
+/* ---------- Button (1em/2em padding, ≥14px) ---------- */
+.df-btn{font:600 14px/1 inherit;padding:1em 2em;border-radius:var(--radius);border:1px solid transparent;
+  cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-2);transition:background .15s,box-shadow .15s,opacity .15s;
+  background:var(--primary);color:var(--primary-contrast)}
+.df-btn:hover{background:var(--primary-hover);box-shadow:var(--shadow-1)}        /* hover = shade + lift */
+.df-btn:active{transform:translateY(1px)}
+.df-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-btn[disabled],.df-btn.is-disabled{opacity:.5;cursor:not-allowed;box-shadow:none;background:var(--primary)}
+.df-btn.is-loading{color:transparent;pointer-events:none;position:relative}
+.df-btn.is-loading::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--primary-contrast);
+  border-top-color:transparent;border-radius:50%;animation:df-spin .6s linear infinite}
+@keyframes df-spin{to{transform:rotate(360deg)}}
+.df-btn--secondary{background:var(--surface-2);color:var(--text);border-color:var(--border)}
+.df-btn--secondary:hover{background:var(--border)}
+.df-btn--tertiary{background:transparent;color:var(--text);border-color:transparent}
+.df-btn--tertiary:hover{background:var(--surface-2)}
+
+/* ---------- Input & Textarea (focus / valid / error / disabled) ---------- */
+.df-field{display:flex;flex-direction:column;gap:var(--space-1);margin-bottom:var(--space-4)}
+.df-label{font-size:13px;font-weight:600;color:var(--text)}
+.df-input,.df-textarea,.df-select{font:inherit;font-size:16px;color:var(--text);background:var(--surface-1);
+  border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-4);transition:border-color .15s,box-shadow .15s}
+.df-input{height:40px}.df-textarea{min-height:100px;padding:var(--space-2) var(--space-4);resize:vertical}
+.df-input:focus,.df-textarea:focus,.df-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 25%,transparent)}
+.df-input:disabled,.df-textarea:disabled{background:var(--surface-2);color:var(--text-muted);cursor:not-allowed}
+.df-field.is-valid .df-input,.df-field.is-valid .df-textarea{border-color:var(--success)}
+.df-field.is-error .df-input,.df-field.is-error .df-textarea{border-color:var(--danger)}
+.df-help{font-size:12px;color:var(--text-muted)}
+.df-field.is-error .df-help{color:var(--danger)}   /* error message lives BELOW the field */
+
+/* ---------- Checkbox & Radio (checked / focus / disabled) ---------- */
+.df-check{display:inline-flex;gap:var(--space-2);align-items:center;cursor:pointer;font-size:14px;color:var(--text)}
+.df-check input{appearance:none;width:16px;height:16px;border:1.5px solid var(--border);background:var(--surface-1);cursor:pointer}
+.df-check input[type=checkbox]{border-radius:3px}.df-check input[type=radio]{border-radius:50%}
+.df-check input:checked{background:var(--primary);border-color:var(--primary)}
+.df-check input[type=checkbox]:checked{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M6.5 11L3 7.5l1-1L6.5 9 12 3.5l1 1z'/%3E%3C/svg%3E")}
+.df-check input:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.df-check input:disabled{opacity:.5;cursor:not-allowed}
+
+/* ---------- Toggle (on / off, high-contrast state) ---------- */
+.df-toggle{position:relative;width:48px;height:26px;display:inline-block}
+.df-toggle input{appearance:none;width:48px;height:26px;border-radius:999px;background:var(--border);cursor:pointer;transition:background .15s}
+.df-toggle input:checked{background:var(--primary)}
+.df-toggle input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:var(--shadow-card)}
+.df-toggle input:checked::after{left:25px}
+.df-toggle input:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+/* ---------- Badge (semantic variants) ---------- */
+.df-badge{display:inline-block;padding:3px 8px;font-size:13px;font-weight:600;border-radius:999px;line-height:1;
+  background:var(--surface-2);color:var(--text)}
+.df-badge--success{background:color-mix(in oklab,var(--success) 15%,var(--surface-1));color:var(--success)}
+.df-badge--info{background:color-mix(in oklab,var(--info) 15%,var(--surface-1));color:var(--info)}
+.df-badge--danger{background:color-mix(in oklab,var(--danger) 15%,var(--surface-1));color:var(--danger)}
+
+/* ---------- Card (hover elevation) ---------- */
+.df-card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:var(--space-4);box-shadow:var(--shadow-card);transition:box-shadow .15s,transform .15s}
+.df-card.is-interactive:hover{box-shadow:var(--shadow-1);transform:translateY(-2px)}
+
+/* ---------- Tabs (active / inactive / hover) ---------- */
+.df-tabs{display:flex;gap:var(--space-2);border-bottom:1px solid var(--border)}
+.df-tab{font-size:14px;line-height:24px;font-weight:400;color:var(--text-muted);padding:var(--space-2) var(--space-4);
+  border:0;border-bottom:2px solid transparent;background:none;cursor:pointer}
+.df-tab:hover{color:var(--text)}
+.df-tab[aria-selected=true]{color:var(--text-strong);font-weight:600;border-bottom-color:var(--primary)}
+.df-tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+/* ---------- Accordion (collapsed / expanded, caret rotate) ---------- */
+.df-acc{border-bottom:1px solid var(--border)}
+.df-acc-header{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;
+  font-size:15px;color:var(--text-strong);padding:var(--space-3) 0;background:none;border:0;cursor:pointer}
+.df-acc-header:hover{color:var(--primary)}
+.df-acc-caret{transition:transform .15s}
+.df-acc[open] .df-acc-caret,.df-acc-header[aria-expanded=true] .df-acc-caret{transform:rotate(180deg)}
+.df-acc-panel{font-size:12px;color:var(--text-muted);padding:0 0 var(--space-3)}
+
+/* ---------- Table (header / rows / hover / selected / zebra) ---------- */
+.df-table{width:100%;border-collapse:collapse;font-size:14px}
+.df-table th{text-align:left;font-weight:600;color:var(--text-strong);padding:var(--space-3) var(--space-4);border-bottom:2px solid var(--border)}
+.df-table td{padding:var(--space-3) var(--space-4);color:var(--text);border-bottom:1px solid var(--border)}
+.df-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+.df-table tbody tr:nth-child(even){background:var(--surface-2)}       /* zebra */
+.df-table tbody tr:hover{background:color-mix(in oklab,var(--primary) 6%,var(--surface-1))}
+.df-table tbody tr[aria-selected=true]{background:color-mix(in oklab,var(--primary) 12%,var(--surface-1))}
+
+/* ---------- Avatar (+ status dot) ---------- */
+.df-avatar{position:relative;width:40px;height:40px;border-radius:50%;background:var(--surface-2);
+  border:1px solid var(--border);display:inline-grid;place-items:center;color:var(--text-muted);font-size:13px;font-weight:600}
+.df-avatar .df-status{position:absolute;right:0;bottom:0;width:10px;height:10px;border-radius:50%;border:2px solid var(--surface-1)}
+.df-avatar .df-status.online{background:var(--success)}.df-avatar .df-status.offline{background:var(--text-muted)}
+
+/* ---------- Tooltip (hover/focus reveal, no shadow) ---------- */
+.df-tip{position:relative;display:inline-block}
+.df-tip .df-tip-box{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  max-width:208px;background:var(--text-strong);color:var(--surface-1);font-size:12px;padding:var(--space-2) var(--space-3);
+  border-radius:var(--radius-sm);opacity:0;pointer-events:none;transition:opacity .12s;white-space:normal;text-align:center}
+.df-tip:hover .df-tip-box,.df-tip:focus-within .df-tip-box{opacity:1}
+
+/* ---------- Toast (enter / dismiss) ---------- */
+.df-toast{display:flex;gap:var(--space-3);align-items:start;background:var(--surface-1);border:1px solid var(--border);
+  border-left:4px solid var(--info);border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);box-shadow:var(--shadow-1);max-width:360px}
+.df-toast--success{border-left-color:var(--success)}.df-toast--danger{border-left-color:var(--danger)}
+.df-toast--warning{border-left-color:var(--warning)}
