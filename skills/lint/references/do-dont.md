@@ -2,7 +2,7 @@
 
 Concrete, checkable rules distilled from *Design for Developers* (+ 2026 modernizations).
 Severity: **error** = a11y / hard rule · **warn** = strong best practice · **info** = polish.
-Thresholds mirror `design-formulas:reference` → `tokens.json`.
+Thresholds mirror `impeccable-rails:reference` → `tokens.json`.
 
 ## Color
 

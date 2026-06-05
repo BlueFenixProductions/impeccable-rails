@@ -1,4 +1,6 @@
-# design-formulas
+# Impeccable Rails
+
+*Design formulas. No winging it.*
 
 Concrete, **opinionated design formulas for developers** — the numbers and rules that make a UI
 look intentional, packaged so Claude (and you) can apply them consistently.
@@ -12,8 +14,8 @@ book's dense layer of **exact numeric formulas** plus its **DO/DON'T rules**, ca
 | Component | Type | What it does |
 |-----------|------|--------------|
 | **`reference`** | skill | The keystone. Numeric formulas as curated tables + a machine-readable `tokens.json`. Auto-loads when concrete design numbers are needed. |
-| **`/design-formulas:scaffold`** | command | Brief → starter design system. Emits CSS vars + `tokens.json`, SCSS/Vuetify theme, Tailwind config, and an HTML + Markdown styleguide. Computes exact WCAG ratios via `scripts/contrast.py`. |
-| **`/design-formulas:wireframe`** | command | Page description → low-fidelity grayscale wireframe HTML (one primary accent, 12-col grid, lorem/boxes). The low-fi step before `scaffold`. |
+| **`/impeccable-rails:scaffold`** | command | Brief → starter design system. Emits CSS vars + `tokens.json`, SCSS/Vuetify theme, Tailwind config, and an HTML + Markdown styleguide. Computes exact WCAG ratios via `scripts/contrast.py`. |
+| **`/impeccable-rails:wireframe`** | command | Page description → low-fidelity grayscale wireframe HTML (one primary accent, 12-col grid, lorem/boxes). The low-fi step before `scaffold`. |
 | **`lint`** | skill | Runs the book's DO/DON'T checklist against a design. Complements (does not replace) `impeccable` / `design:design-critique`. |
 
 `scaffold` and `lint` both read `reference` — that's the only hard link. "Used with `impeccable` /
@@ -37,12 +39,12 @@ this plugin makes **no edits** to other skills.
 The repo doubles as a single-plugin marketplace (`.claude-plugin/marketplace.json`):
 
 ```bash
-claude plugin marketplace add ~/Documents/GitHub/design-formulas
-claude plugin install design-formulas@design-formulas      # --scope user (default)
+claude plugin marketplace add ~/Documents/GitHub/impeccable-rails
+claude plugin install impeccable-rails@impeccable-rails      # --scope user (default)
 ```
 
 Then **restart Claude Code** (plugins load at startup). Confirm with `claude plugin list` or
-`/help` that `design-formulas:reference`, `design-formulas:lint`, and `/design-formulas:scaffold`
+`/help` that `impeccable-rails:reference`, `impeccable-rails:lint`, and `/impeccable-rails:scaffold`
 are available. Cost: ~361 tokens always-on (the skill descriptions); skills/command bodies load
 only when invoked.
 
@@ -57,7 +59,7 @@ only when invoked.
   (logo→palette→type→imagery→grid→components), component states, design-system concepts.
 - **`scripts/contrast.py`** — `/scaffold` computes exact WCAG 2.2 ratios instead of estimating them.
 
-**v0.4 added:** `/design-formulas:wireframe` — low-fidelity grayscale wireframes (`assets/wireframe-kit.css`).
+**v0.4 added:** `/impeccable-rails:wireframe` — low-fidelity grayscale wireframes (`assets/wireframe-kit.css`).
 
 **v0.5 adds:** **per-component state CSS** — `assets/components.css` (a token-driven library covering
 hover/focus/active/disabled/loading, valid/error inputs, and tab/accordion/table/toast variants),

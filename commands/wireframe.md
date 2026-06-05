@@ -3,10 +3,10 @@ description: Generate a low-fidelity, grayscale wireframe for a page from a shor
 argument-hint: "[page + sections, e.g. 'SaaS landing: nav, hero, 3 features, pricing, footer' or 'login form']"
 ---
 
-# /design-formulas:wireframe
+# /impeccable-rails:wireframe
 
 Produce a **low-fidelity wireframe** — the first step of the book's process (wireframe → styleguide →
-prototype). Follow the aesthetic-wireframe rules in the **`design-formulas:reference`** skill
+prototype). Follow the aesthetic-wireframe rules in the **`impeccable-rails:reference`** skill
 (`references/process.md` §1) and the grid/spacing in `references/spacing-layout.md`.
 
 **Rules (non-negotiable for a wireframe):**
@@ -39,7 +39,7 @@ prototype). Follow the aesthetic-wireframe rules in the **`design-formulas:refer
 ## Report
 
 List the sections laid out, the scan pattern chosen, and where the single primary CTA sits. Then offer
-the natural next step: **`/design-formulas:scaffold`** to turn the approved wireframe into a high-fidelity
+the natural next step: **`/impeccable-rails:scaffold`** to turn the approved wireframe into a high-fidelity
 design system (palette, type, tokens), or hand off to `frontend-design` / `impeccable` to build it for real.
 
 > A wireframe answers "where does everything go and what ranks first?" — nothing more. If you're reaching

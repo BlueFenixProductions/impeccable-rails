@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """WCAG 2.2 contrast calculator — dependency-free.
 
-The /design-formulas:scaffold command runs this to report EXACT contrast ratios
+The /impeccable-rails:scaffold command runs this to report EXACT contrast ratios
 instead of estimating them (estimates drift by up to ~1.5 and shouldn't be trusted).
 
 Usage:

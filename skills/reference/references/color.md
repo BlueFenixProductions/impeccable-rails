@@ -104,5 +104,5 @@ the matching hue: in a triadic blue/amber/emerald palette → `success`=tertiary
 ## 7. Building the color schema (style-guide output)
 
 For each role color (primary / secondary / tertiary / base): the full 50–950 ladder with HEX values,
-plus a one-line usage note per weight band. This schema is what `/design-formulas:scaffold` emits and
+plus a one-line usage note per weight band. This schema is what `/impeccable-rails:scaffold` emits and
 what later component/typography decisions reference.

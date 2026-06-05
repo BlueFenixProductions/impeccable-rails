@@ -101,4 +101,4 @@ first) · indentation. Order content so titles read first, lead paragraphs secon
 Pick header + body typeface; set H1–H5 + body + small (fluid `clamp` values); define line-height and
 letter-spacing per level; provide styled examples. Example:
 `H1 Roboto Light 50px / 1.25 / #FFF · H2 Roboto Regular 42px / 1.33 · H3 Roboto Bold 30px / 1.5 ·
-Body 16–18px / 1.5`. This is what `/design-formulas:scaffold` emits.
+Body 16–18px / 1.5`. This is what `/impeccable-rails:scaffold` emits.

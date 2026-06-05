@@ -1,14 +1,14 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "design-formulas",
-  "description": "Single-plugin marketplace for the design-formulas plugin.",
+  "name": "impeccable-rails",
+  "description": "Single-plugin marketplace for the impeccable-rails plugin.",
   "owner": {
     "name": "Blue Fenix Productions LLC",
     "email": "chris@bluefenix.net"
   },
   "plugins": [
     {
-      "name": "design-formulas",
+      "name": "impeccable-rails",
       "description": "2026-modernized design formulas for developers: numeric reference (type scale, spacing, color weights, contrast, shadows), a brief-to-design-system scaffold command, and a DO/DON'T lint rubric.",
       "source": "./",
       "category": "design",

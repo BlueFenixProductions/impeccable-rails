@@ -3,7 +3,7 @@ name: reference
 description: Concrete design numbers and formulas for building UI — use when you need exact values for type scale / font sizes, line-height, letter-spacing, spacing and grid systems, color weight ladders (50–950), color harmony (triadic/analogous/complementary), OKLCH palette generation, contrast/WCAG ratios, shadow depth values, button/badge/card/input padding and sizing, or visual-hierarchy levers. Pulls precise tokens so designs use intentional, consistent values instead of guessed ones. Pairs with impeccable and frontend-design when implementing interfaces.
 ---
 
-# Design Formulas — Reference
+# Impeccable Rails — Reference
 
 This skill is a **lookup layer**. When you need a concrete design value, read the relevant
 reference file rather than guessing. All values are distilled from *Design for Developers*

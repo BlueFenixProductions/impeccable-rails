@@ -3,9 +3,9 @@ description: Generate a starter design system from a brand brief — palette (OK
 argument-hint: "[brand/brief, e.g. 'fintech dashboard, trustworthy, seed #2563EB, light+dark']"
 ---
 
-# /design-formulas:scaffold
+# /impeccable-rails:scaffold
 
-Build a coherent starter design system using the formulas in the **`design-formulas:reference`**
+Build a coherent starter design system using the formulas in the **`impeccable-rails:reference`**
 skill. Read `skills/reference/references/tokens.json` and the relevant `references/*.md` for all
 values and recipes — do not invent numbers. For the styleguide's structure and the build order, follow
 `references/process.md` (logo → palette → typography → imagery/icons → grid → components).
@@ -80,7 +80,7 @@ Write a `design-system/` folder (or the path the user gives). For each selected 
 ## Step 6 — Report
 
 Summarize: harmony chosen, the 3–4 role colors with their 500 HEX, header/body typefaces, and the files
-written. Offer to run **`design-formulas:lint`** against the result, or hand off to `frontend-design` /
+written. Offer to run **`impeccable-rails:lint`** against the result, or hand off to `frontend-design` /
 `impeccable` to build UI on top of the tokens.
 
 > Generate from the system, not ad hoc. Every value should trace to the reference. Less is more:

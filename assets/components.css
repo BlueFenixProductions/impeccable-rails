@@ -1,5 +1,5 @@
-/* design-formulas — token-driven component library with full state coverage
- * Binds to the CSS variables /design-formulas:scaffold emits (--surface-*, --text-*, --primary*,
+/* impeccable-rails — token-driven component library with full state coverage
+ * Binds to the CSS variables /impeccable-rails:scaffold emits (--surface-*, --text-*, --primary*,
  * --space-*, --shadow-*, status colors). The :root block below is a FALLBACK so this file works
  * standalone; scaffold's tokens.css overrides it. State rules follow components.md + states.md.
  */

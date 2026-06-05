@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-// Design Formulas — Fintech Dashboard
+// Impeccable Rails — Fintech Dashboard
 // Brief: trustworthy · seed #2563EB · triadic · light+dark
 
 module.exports = {

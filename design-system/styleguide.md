@@ -1,7 +1,7 @@
 # Fintech Dashboard — Design System Styleguide
 
 **Brief:** Trustworthy, data-dense financial dashboard · seed `#2563EB` · light + dark  
-**Generated:** 2026-06-03 · Design Formulas v0.1
+**Generated:** 2026-06-03 · Impeccable Rails v0.1
 
 ---
 
@@ -201,4 +201,4 @@ Grid: 12 columns · gutter = `--space-6` (24px)
 | `styleguide.md` | This file |
 | `styleguide.html` | Visual specimen (open in browser) |
 
-**Next steps:** Run `design-formulas:lint` to validate, or hand off to `frontend-design` / `impeccable` to build UI on these tokens.
+**Next steps:** Run `impeccable-rails:lint` to validate, or hand off to `frontend-design` / `impeccable` to build UI on these tokens.

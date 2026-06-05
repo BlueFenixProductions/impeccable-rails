@@ -2,7 +2,7 @@
 
 The **state contract** for interactive components — which states each has and what changes. The
 ready-to-use implementation is bundled at `assets/components.css` (token-driven; binds to the variables
-`/design-formulas:scaffold` emits). States follow the book + the 2026 rules (WCAG 2.2 focus, semantic status).
+`/impeccable-rails:scaffold` emits). States follow the book + the 2026 rules (WCAG 2.2 focus, semantic status).
 
 ## Universal rules
 
@@ -34,7 +34,7 @@ ready-to-use implementation is bundled at `assets/components.css` (token-driven;
 
 ## Usage
 
-`/design-formulas:scaffold` resolves `components.css` against the brief's tokens and includes it so the
+`/impeccable-rails:scaffold` resolves `components.css` against the brief's tokens and includes it so the
 styleguide shows **live, interactive** states. To use directly: ship `assets/components.css` after your
 tokens.css — it reads the same `--surface-*`, `--text-*`, `--primary*`, `--space-*`, `--shadow-*`, and
 status variables. Class prefix is `df-` (`.df-btn`, `.df-input`, `.df-field.is-error`, `.df-tab[aria-selected]`…).
